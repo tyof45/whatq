@@ -1,8 +1,7 @@
 import React, { Component } from "react";
-import './App.css';
-import Router from './components/routes/index'
+import Logo from "../../img/logo.jpg"
 
-class App extends Component {
+class Login extends Component {
 
   constructor(props) {
     super(props);
@@ -16,18 +15,18 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Router />
-        {/* <div id="venderSplash">
+        <div id="venderSplash">
           <div>
+            <img className="logo" alt="logo" src={Logo} />
             <input type="text" placeholder="email"></input> <br />
             <input type="password" placeholder="password"></input> <br />
             <a href="/builder"><button type="submit">Log In</button></a>
           </div>
-        </div> */}
+        </div>
       </div >
     )
   };
 }
 
 
-export default App;
+export default Login;
