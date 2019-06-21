@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import './App.css';
 import Router from './components/routes/routes'
+import Header from './components/header/header';
 
 class App extends Component {
 
@@ -17,17 +18,10 @@ class App extends Component {
     return (
       <div className="App">
         <Router />
-        {/* <div id="venderSplash">
-          <div>
-            <input type="text" placeholder="email"></input> <br />
-            <input type="password" placeholder="password"></input> <br />
-            <a href="/builder"><button type="submit">Log In</button></a>
-          </div>
-        </div> */}
+        <Header />
       </div >
     )
   };
 }
-
 
 export default App;
