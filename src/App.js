@@ -1,6 +1,6 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 import './App.css';
-import Router from './components/routes/routes'
+import Router from './components/routes/routes';
 import Header from './components/header/header';
 import Footer from './components/footer/footer';
 
@@ -9,8 +9,6 @@ class App extends Component {
     super(props);
 
     this.state = {
-      email: "",
-      password: ""
     };
   }
 
@@ -21,8 +19,8 @@ class App extends Component {
         <Header />
         <Footer />
       </div>
-    )
-  };
+    );
+  }
 }
 
 export default App;
