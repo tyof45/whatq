@@ -178,6 +178,11 @@ header>img {
   height: auto;
 }
 
+.item>img {
+  width: 100%;
+  height: auto;
+}
+
 .itemTitle {
   font-size: 1em;
   font-weight: 700;
