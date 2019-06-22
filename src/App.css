@@ -107,17 +107,24 @@ header>img {
   margin: 20px;
   border-radius: 5px;
   border: 1px solid rgb(51, 51, 51, 0.1);
+  overflow: hidden;
+}
+
+.menu>img {
+  width: 100%;
+  height: auto;
 }
 
 .menuTitle {
   font-size: 2em;
+  font-weight: 900;
   margin: 0;
   padding: 10px;
   position: absolute;
   bottom: 0;
   left: 0;
   color: #fff;
-  text-shadow: 0 0 10px rgba(51, 51, 51, 0.5);
+  text-shadow: 0 0 10px rgba(0, 0, 0);
 }
 
 .section {
@@ -151,7 +158,6 @@ header>img {
 
 .item {
   position: relative;
-  padding: 5px;
   box-sizing: border-box;
   border-radius: 5px;
   margin: 15px;
@@ -160,15 +166,21 @@ header>img {
   border: 1px solid rgb(51, 51, 51, 0.1);
 }
 
+.item>img {
+  width: 100%;
+  height: auto;
+}
+
 .itemTitle {
   font-size: 1em;
+  font-weight: 700;
   margin: 0;
   padding: 10px;
   position: absolute;
   bottom: 0;
   left: 0;
   color: #fff;
-  text-shadow: 0 0 10px rgba(51, 51, 51, 0.5);
+  text-shadow: 0 0 10px rgba(0, 0, 0);
 }
 
 footer {

@@ -20,6 +20,7 @@ class Builder extends Component {
         <div id="content">
           <div id="menus">
             <div className="menu">
+              <img alt="menu item" src="../menu.jpg" />
               <p className="menuTitle">menu title</p>
             </div>
           </div>
@@ -29,6 +30,7 @@ class Builder extends Component {
             <div className="rule"></div>
             <div className="items">
               <div className="item">
+                <img alt="menu item" src="../burritobowl.jpg" />
                 <p className="itemTitle">item title</p>
               </div>
             </div>
