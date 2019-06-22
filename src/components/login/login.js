@@ -1,14 +1,13 @@
-import React, { Component } from "react";
-import Logo from "../../img/logo.jpg"
+import React, { Component } from 'react';
+import Logo from '../../img/logo.jpg';
 
 class Login extends Component {
-
   constructor(props) {
     super(props);
 
     this.state = {
-      email: "",
-      password: ""
+      email: '',
+      password: '',
     };
   }
 
@@ -18,14 +17,18 @@ class Login extends Component {
         <div id="venderSplash">
           <div>
             <img className="logo" alt="logo" src={Logo} />
-            <input type="text" placeholder="email"></input> <br />
-            <input type="password" placeholder="password"></input> <br />
+            <input type="text" placeholder="email" />
+            {' '}
+            <br />
+            <input type="password" placeholder="password" />
+            {' '}
+            <br />
             <a href="/builder"><button type="submit">Log In</button></a>
           </div>
         </div>
-      </div >
-    )
-  };
+      </div>
+    );
+  }
 }
 
 

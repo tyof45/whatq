@@ -1,13 +1,12 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 
 class Mobile extends Component {
-
   constructor(props) {
     super(props);
 
     this.state = {
-      email: "",
-      password: ""
+      email: '',
+      password: '',
     };
   }
 
@@ -19,9 +18,9 @@ class Mobile extends Component {
             <h1>Mobile App</h1>
           </div>
         </div>
-      </div >
-    )
-  };
+      </div>
+    );
+  }
 }
 
 
