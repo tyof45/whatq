@@ -13,7 +13,7 @@ class Header extends Component {
 
   render() {
     return (
-      <header>whatQ</header>
+      <header><img alt="logo" src="../logo.svg" /><h2>whatQ</h2></header>
     )
   };
 }

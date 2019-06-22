@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 
 class Builder extends Component {
   render() {
@@ -7,13 +7,13 @@ class Builder extends Component {
 
         <div id="toolbar">
           <span className="toolbarItem">
-            + Add Menu
+            + Menu
             </span>|
             <span className="toolbarItem">
-            + Add Section
+            + Section
             </span>|
             <span className="toolbarItem">
-            + Add Item
+            + Item
             </span>
         </div>
 
@@ -34,12 +34,8 @@ class Builder extends Component {
             </div>
           </div>
 
-
-
-
-
-
         </div>
+
       </div >
     )
   };

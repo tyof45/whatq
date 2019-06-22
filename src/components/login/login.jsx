@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import Logo from "../../img/logo.jpg";
 
 class Login extends Component {
 
@@ -17,7 +16,8 @@ class Login extends Component {
       <div className="App">
         <div id="venderSplash">
           <div>
-            <img className="logo" alt="logo" src={Logo} />
+            <img className="logo" alt="logo" src="../../logo-icon.svg" />
+            <span id="version">Vendor Demo v0.0.1</span>
             <input type="text" placeholder="email"></input> <br />
             <input type="password" placeholder="password"></input> <br />
             <a href="/builder"><button type="submit">Log In</button></a>
