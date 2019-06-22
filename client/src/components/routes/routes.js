@@ -5,7 +5,7 @@ import Login from '../login/login';
 import Mobile from '../mobile/mobile';
 
 const Routes = () => (
-  <BrowserRouter >
+  <BrowserRouter>
     <Switch>
       <Route exact path="/" component={Login} />
       <Route path="/builder" component={Builder} />
