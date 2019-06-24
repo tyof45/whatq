@@ -1,5 +1,9 @@
 {
   "name": "whatQ",
+  "short_name": "whatQ",
+  "lang": "en-US",
+  "start_url": "/",
+  "display": "fullscreen",
   "icons": [
     {
       "src": "\/android-icon-36x36.png",
