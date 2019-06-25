@@ -2,7 +2,7 @@ const router = require("express").Router();
 const vendorController = require("../../controllers/vendorsController");
 
 //Vendor - Displays all events and menus
-router.route("/:vendor")
+router.route("/:vendor/info")
   .get(vendorController.findAll);
 
 //Vendor - GET/UPDATE/CREATE/DELETE all menus
@@ -22,16 +22,10 @@ router.route("/:vendor/orders")
 router.route("/:vendor/orders/:id")
   .put(vendorController.updateOrder);
 
-//Vendor - GET all events per vendor
 //Vendor - Attach new events
 //Vendor - Delete events
 router.route("/:vendor/events")
-  .get(vendorController.findEvents)
   .put(vendorController.attachEvents)
   .delete(vendorController.deleteEvents);
-
-//Customers - display all events for a specific vendor
-router.route("/:vendor/events")
-  .get(vendorController.eventById);
 
 module.exports = router;
