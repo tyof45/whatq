@@ -8,7 +8,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 //customer to see all events for a specific vendor
-app.get('/api/vendors/:event', (req, res) => {
+app.get('/api/vendor/:event', (req, res) => {
     res.send({ express: 'Vendors - This is data coming from the server'});
 });
 
@@ -90,14 +90,6 @@ app.get('/api/:events/vendors', (req, res) => {
     );
 });
 
-//dislaying a list of all vendors from a specific event to the consumer
-app.get('/api/:events/vendors', (req, res) => {
-    console.log(req.body);
-    res.send(
-        `I received your POST request. This is what you sent me: ${req.body.post}`,
-    );
-});
-
 //add an order
 app.post('/api/:vendor/orders', (req, res) => {
     console.log(req.body);
@@ -105,13 +97,5 @@ app.post('/api/:vendor/orders', (req, res) => {
         `I received your POST request. This is what you sent me: ${req.body.post}`,
     );
 });
-
-
-
-
-
-
-
-
 
 app.listen(port, () => console.log(`Listening on port ${port}`));
