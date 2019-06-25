@@ -1,15 +1,17 @@
 const db = require('../models');
 
 module.exports = {
-  /**
-   * returns all Events as an Array
-   * @returns {Array} - array of all event objects
-   * object that the array contains is as follows
-   * @property name - event name
-   * @property  
-   */
-  readAllEvents(){
-
+  readAllEvents: (req, res) => {
+    db.Event
+    .find(req.query)
+    .sort({ date: -1 })
+    .then(dbModel => res.json(dbModel))
+    .catch(err => res.status(422).json(err));
+  },
+  readAllVendors: (req, res) => {
+    db.Event
+    .findById(req.params.id)
+    .then(dbModel => res.json(dbModel))
+    .catch(err => res.status(422).json(err));
   }
-  
 };

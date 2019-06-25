@@ -1,41 +1,58 @@
 const db = require('../models');
 
 module.exports = {
-  /**
-   *returns the sum of the two paramaters
-   * @param {object}
-   *@property {String} nameOfVendor
-   *@property {String} nameOfMenu
-   */
-  createMenu() {
-
+  createMenu(req, res) {
+    db.Vendors
+      .update({_id: req.params._id}, {$push: {}})
+      .then(dbModel => res.json(dbModel))
+      .catch(err => res.status(422).json(err));
   },
-
-  /**
-   * adds an item to the menu
-   * @param {object}
-   * @property {string} name - name of item
-   * @property {string} price - price of item
-   * @property {string} description - descriptioin of item
-   * @property {string} picture - link to cloudinary
-   */
-  createItem() {
-
+  //testing needed may work, but probably not
+  createItem(req, res) {
+    db.Vendors
+    .update({_id: req.params._id}, {req.params.itemName: req.params.item})
+    .then(dbModel => res.json(dbModel))
+    .catch(err => res.status(422).json(err))
   },
-
-  /**
-   * returns all the items from a single menu
-   * @param {string} nameOfMenu
-   */
-  readSingleMenu(name) {
-
-  },
-
-  /**
-   * returns all vendor data
-   * @param {string} event - name of the event that you wanf the vendors from
-   */
   readAllVendorsFromEvent() {
 
   },
-};
+}
+
+// const db = require("../models");
+
+// // Defining methods for the vendorsController
+// module.exports = {
+//   findAll: function(req, res) {
+//     db.Vendor
+//       .find(req.query)
+//       .sort({ date: -1 })
+//       .then(dbModel => res.json(dbModel))
+//       .catch(err => res.status(422).json(err));
+//   },
+//   findMenu: function(req, res) {
+//     db.Vendor
+//       .findById(req.params.id)
+//       .then(dbModel => res.json(dbModel))
+//       .catch(err => res.status(422).json(err));
+//   },
+//   createMenu: function(req, res) {
+//     db.Vendor
+//       .create(req.body)
+//       .then(dbModel => res.json(dbModel))
+//       .catch(err => res.status(422).json(err));
+//   },
+//   updateMenu: function(req, res) {
+//     db.Vendor
+//       .findOneAndUpdate({ _id: req.params.id }, req.body)
+//       .then(dbModel => res.json(dbModel))
+//       .catch(err => res.status(422).json(err));
+//   },
+//   deleteMenu: function(req, res) {
+//     db.Vendor
+//       .findById({ _id: req.params.id })
+//       .then(dbModel => dbModel.remove())
+//       .then(dbModel => res.json(dbModel))
+//       .catch(err => res.status(422).json(err));
+//   }
+// };
