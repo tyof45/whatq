@@ -6,7 +6,7 @@ const vendorSchema = new Schema({
   name: { type: String, required: true },
   address: { type: String, required: true },
   photo: { type: String, required: true },
-  Menus: Array,
+  Menus: [Object],
 });
 
 const Vendor = mongoose.model('Event', vendorSchema);

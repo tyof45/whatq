@@ -1,14 +1,16 @@
 const mongoose = require('mongoose');
+const db = require('../models');
+
 // const db = require('../models');
 
 
 mongoose.connect(
   process.env.MONGODB_URI
-    || 'mongodb://localhost/whatQ',
+  || 'mongodb://localhost/whatQ',
 );
 
-// const itemSeed = [
-//   {
-
-//   },
-// ];
+const eventSeed = [
+  {
+    Name: 'La County Fair',
+  },
+];
