@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 
 function Footer() {
   return (
@@ -9,14 +9,13 @@ function Footer() {
           <h3>Help</h3>
           <li>Vendor Contact</li>
           <li>Event Requests</li>
-          <li></li>
           <li>Contact Us</li>
           <li>Request a Feature</li>
         </ul>
       </div>
-      <div className="footerItem3"></div>
-      <div className="footerItem4"></div>
-      <div className="footerItem5"></div>
+      <div className="footerItem3">.</div>
+      <div className="footerItem4">.</div>
+      <div className="footerItem5">.</div>
       <div className="footerItem6">
         <img alt="facebook icon" className="socialMediaIcon" src="../facebook.svg" />
         <img alt="instagram icon" className="socialMediaIcon" src="../instagram.svg" />

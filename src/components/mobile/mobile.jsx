@@ -122,7 +122,6 @@ class Mobile extends Component {
   }
 
   render() {
-
     const events = this.state.events.map((event, index) => {
       return (
 

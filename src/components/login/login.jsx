@@ -1,13 +1,9 @@
 import React, { Component } from 'react';
-import Logo from '../../img/logo-icon.svg';
 
 class Login extends Component {
   constructor(props) {
     super(props);
-
     this.state = {
-      email: '',
-      password: '',
     };
   }
 
@@ -16,20 +12,18 @@ class Login extends Component {
       <div className="App">
         <div id="venderSplash">
           <div>
-            <img className="logo" alt="logo" src={Logo} />
+            <img className="logo" alt="logo" src="../../logo-icon.svg" />
+            <span id="version">Vendor Demo v0.0.1</span>
             <input type="text" placeholder="email" />
-            {' '}
             <br />
             <input type="password" placeholder="password" />
-            {' '}
             <br />
-            <a href="/builder"><button className="loginButton" type="submit">Log In</button></a>
+            <a href="/builder"><button type="submit">Log In</button></a>
           </div>
         </div>
       </div>
     );
   }
 }
-
 
 export default Login;
