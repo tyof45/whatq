@@ -1,6 +1,6 @@
 import React from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import Builder from '../builder/builder.jsx'
+import Builder from '../builder/builder'
 import Login from '../login/login';
 import Mobile from '../mobile/mobile';
 

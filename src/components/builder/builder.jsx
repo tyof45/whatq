@@ -1,6 +1,11 @@
 import React, { Component } from 'react';
+import AddMenu from '../addmenu/addmenu';
+import AddItem from '../additem/additem';
+import EventSelect from '../eventselect/eventselect';
 
 class Builder extends Component {
+
+
 
   constructor(props) {
     super(props);
@@ -8,7 +13,7 @@ class Builder extends Component {
     this.state = {
       menus: [
         {
-          title: "food",
+          title: "Bowls",
           photo: "../menu.jpg",
           items: [
             {
@@ -20,8 +25,8 @@ class Builder extends Component {
           ]
         },
         {
-          title: "drinks",
-          photo: "../menu.jpg",
+          title: "Drinks",
+          photo: "../drinks.jpg",
           items: [
             {
               title: "water",
@@ -32,6 +37,7 @@ class Builder extends Component {
           ]
         }
       ],
+      title: [],
       items: []
     };
   }
@@ -40,15 +46,17 @@ class Builder extends Component {
     let index = this.state.menus.findIndex(function (menu) {
       return menu.title === menuTitle
     });
-    this.setState({ items: this.state.menus[index].items })
+    this.setState({ items: this.state.menus[index].items, title: this.state.menus[index].title })
   };
 
+
   render() {
+
     const menus = this.state.menus.map((menu, index) => {
       return (
 
         <div key={index} onClick={() => this.loadMenu(menu.title)} className="menu">
-          <img alt="menu item" src={menu.photo} />
+          <img alt={menu.title} src={menu.photo} />
           <p className="menuTitle">{menu.title}</p>
         </div>
       )
@@ -56,7 +64,7 @@ class Builder extends Component {
 
     const items = this.state.items.map((item, index) => {
       return (<div key={index} className="section">
-        <p className="sectionTitle">menu title</p>
+        <p className="sectionTitle">{this.state.title}</p>
         <div className="rule"></div>
         <div className="items">
           <div className="item">
@@ -70,12 +78,9 @@ class Builder extends Component {
     return (
       <div className="App" >
         <div id="toolbar">
-          <span className="toolbarItem">
-            + Menu
-            </span>|
-            <span className="toolbarItem">
-            + Item
-            </span>
+          <AddMenu />|
+          <AddItem />
+          <EventSelect />
         </div>
         <div id="content">
           <div id="menus">
@@ -84,7 +89,6 @@ class Builder extends Component {
           {items}
         </div>
       </div >
-
     )
   };
 }

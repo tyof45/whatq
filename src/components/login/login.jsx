@@ -23,7 +23,7 @@ class Login extends Component {
             <input type="password" placeholder="password" />
             {' '}
             <br />
-            <a href="/builder"><button type="submit">Log In</button></a>
+            <a href="/builder"><button className="loginButton" type="submit">Log In</button></a>
           </div>
         </div>
       </div>
