@@ -90,7 +90,7 @@ class Mobile extends Component {
       menus: [],
       eventTitle: ['Events'],
       address: [],
-      selectedCategory: "events"
+      selectedCategory: "Events"
     }
   };
 
@@ -98,14 +98,14 @@ class Mobile extends Component {
     let index = this.state.events.findIndex(function (event) {
       return event.title === eventTitle;
     });
-    this.setState({ selectedCategory: "vendors", vendors: this.state.events[index].vendors, eventTitle: this.state.events[index].title });
+    this.setState({ selectedCategory: "Vendors", vendors: this.state.events[index].vendors, eventTitle: this.state.events[index].title });
   };
 
   loadMenus = (vendorTitle) => {
     let index = this.state.vendors.findIndex(function (vendor) {
       return vendor.title === vendorTitle;
     });
-    this.setState({ selectedCategory: "menus", menus: this.state.vendors[index].menus, currentVendor: vendorTitle });
+    this.setState({ selectedCategory: "Menus", menus: this.state.vendors[index].menus, currentVendor: vendorTitle });
   };
 
   createOrder = (itemTitle) => {
@@ -166,28 +166,42 @@ class Mobile extends Component {
       )
     });
 
+
     let renderedItem = null;
     let title = null;
-    let previousCategory;
-    if (this.state.selectedCategory === "events") {
+    let previousCategory = null;
+    let backButton = null;
+    if (this.state.selectedCategory === "Events") {
+      previousCategory = "";
       renderedItem = events;
-      previousCategory = "events";
       title = "Events"
-    } else if (this.state.selectedCategory === "vendors") {
+    } else if (this.state.selectedCategory === "Vendors") {
       renderedItem = vendors;
-      previousCategory = "events";
-      title = "Vendors"
-    } else if (this.state.selectedCategory === "menus") {
+      title = "Events"
+      previousCategory = "Events";
+      backButton = "< Events"
+      title = this.state.eventTitle;
+    } else if (this.state.selectedCategory === "Menus") {
       renderedItem = menus;
-      previousCategory = "vendors";
+      title = "Vendors";
+      backButton = "< Vendors"
+      previousCategory = "Vendors";
       title = this.state.currentVendor;
     }
 
     return (
       <div id="mobileContent">
-        <div onClick={() => this.goBack(previousCategory)}>{title}</div>
+        <div id="mToolbar">
+          <div id="backButton" onClick={() => this.goBack(previousCategory)}>
+            {backButton}
+          </div>
+          <CustomerOrder order={this.state.order} />
+        </div>
+        <div id="mTitle">
+          {title}
+        </div>
         {renderedItem}
-        <CustomerOrder order={this.state.order} />
+
       </div>
     );
   }

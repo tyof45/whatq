@@ -30,7 +30,3 @@ class AddItem extends Component {
 }
 
 export default AddItem;
-
-// const container = document.createElement("div");
-// document.body.appendChild(container);
-// ReactDOM.render(<Dashboard />, container);
