@@ -15,7 +15,9 @@ class Builder extends Component {
         "Pokemon League Finals"
       ],
       attending: [
-
+        "Off the Grid",
+        "Panana Night Market",
+        "Eat Drink Vegan"
       ],
       menus: [
         {
