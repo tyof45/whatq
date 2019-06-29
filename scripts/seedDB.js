@@ -9,6 +9,4 @@ mongoose.connect(
   || 'mongodb://localhost/whatQ',
 );
 
-const itemSeed = [
-  
-]
+
