@@ -1,5 +1,6 @@
 /* eslint-disable global-require */
 module.exports = {
-  Events: require('./events'),
-  Vendors: require('./vendors'),
+  Event: require('./events'),
+  Vendor: require('./vendors'),
+  Orders: require('./orders')
 };

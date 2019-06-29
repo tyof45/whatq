@@ -1,19 +1,26 @@
 const router = require("express").Router();
-const eventController = require("../../controllers/eventsController");
+const eventsController = require("../../controllers/eventsController");
 
 //displays all events to the consumer
-router.route("/events")
-  .get(eventController.readAllEvents);
+router.route("/api/events")
+  .get(eventsController.readAllEvents)
+  .post(eventsController.createEvent)
+  // .put()
+  // .delete()
+  // eventController.readAllEvents
 
 //display a list of all vendors for a specific event to the consumer
 router.route("/:event/vendors")
-  .get(eventController.readAllVendors);
-
+  .get(eventsController.readAllVendors)
+  .put(eventsController.updateVendors)
 //display menu per event per vendor
 //display a list of all vendors for a specific event to the consumer
-router.route("/:event/:vendor/menu")
-  .get(eventController.showMenu);
 
+router.route("/:vendor/menu")
+  // .get(eventsController.showMenu)
 
+router.route("/:event/:vendor/order")
+  .get(eventsController.readOrders) 
+  .post(eventsController.createOrder)
 
 module.exports = router;
