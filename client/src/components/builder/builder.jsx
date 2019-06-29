@@ -98,7 +98,7 @@ class Builder extends Component {
     });
 
     const existingEvents = this.state.attending.map((event, index) => (
-      <span className="attendingTag" value={event}>{event}<img alt="unattend event" onClick={() => this.deleteEvent(event)} src="../close.svg" /></span>
+      <span key={index} className="attendingTag" value={event}>{event}<img alt="unattend event" onClick={() => this.deleteEvent(event)} src="../close.svg" /></span>
     ));
 
     return (

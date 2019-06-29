@@ -23,16 +23,34 @@ class Mobile extends Component {
                   photo: "../menu.jpg",
                   items: [
                     {
-                      title: "anything else",
-                      photo: "../water.gif",
-                      price: "$1",
-                      description: "drink it"
+                      title: "Burrito Bowl",
+                      photo: "../burritobowl.jpg",
+                      price: "1",
+                      description: "Steak, Beans, Cheese, and Avocado"
                     },
                     {
-                      title: "new stuff",
+                      title: "Burrito Bowl",
                       photo: "../burritobowl.jpg",
-                      price: "$1",
-                      description: "drink it"
+                      price: "1",
+                      description: "Steak, Beans, Cheese, and Avocado"
+                    },
+                    {
+                      title: "Burrito Bowl",
+                      photo: "../burritobowl.jpg",
+                      price: "1",
+                      description: "Steak, Beans, Cheese, and Avocado"
+                    },
+                    {
+                      title: "Burrito Bowl",
+                      photo: "../burritobowl.jpg",
+                      price: "1",
+                      description: "Steak, Beans, Cheese, and Avocado"
+                    },
+                    {
+                      title: "Burrito Bowl",
+                      photo: "../burritobowl.jpg",
+                      price: "1",
+                      description: "Steak, Beans, Cheese, and Avocado"
                     }
                   ]
                 },
@@ -43,8 +61,32 @@ class Mobile extends Component {
                     {
                       title: "water",
                       photo: "../water.gif",
-                      price: "$1",
-                      description: "drink it"
+                      price: "1",
+                      description: "enslaved moisture"
+                    },
+                    {
+                      title: "water",
+                      photo: "../water.gif",
+                      price: "1",
+                      description: "enslaved moisture"
+                    },
+                    {
+                      title: "water",
+                      photo: "../water.gif",
+                      price: "1",
+                      description: "enslaved moisture"
+                    },
+                    {
+                      title: "water",
+                      photo: "../water.gif",
+                      price: "1",
+                      description: "enslaved moisture"
+                    },
+                    {
+                      title: "water",
+                      photo: "../water.gif",
+                      price: "1",
+                      description: "Steak, Beans, Cheese, and Avocado"
                     }
                   ]
                 }
@@ -53,12 +95,36 @@ class Mobile extends Component {
             {
               title: 'vendor 2',
               photo: '../vendor2.jpg',
-              items: [
+              menus: [
                 {
-                  title: "water",
-                  photo: "../water.gif",
-                  price: "$1",
-                  description: "drink it"
+                  title: "Food",
+                  photo: "../menu.jpg",
+                  items: [
+                    {
+                      title: "water",
+                      photo: "../burritobowl.jpg",
+                      price: "1",
+                      description: "enslaved moisture"
+                    },
+                    {
+                      title: "new stuff",
+                      photo: "../burritobowl.jpg",
+                      price: "1",
+                      description: "enslaved moisture"
+                    }
+                  ]
+                },
+                {
+                  title: "Drinks",
+                  photo: "../drinks.jpg",
+                  items: [
+                    {
+                      title: "water",
+                      photo: "../burritobowl.jpg",
+                      price: "1",
+                      description: "enslaved moisture"
+                    }
+                  ]
                 }
               ]
             }
@@ -70,14 +136,74 @@ class Mobile extends Component {
           photo: '../event2.jpg',
           vendors: [
             {
+              title: 'vendor 1',
+              photo: '../vendor1.jpeg',
+              menus: [
+                {
+                  title: "Food",
+                  photo: "../menu.jpg",
+                  items: [
+                    {
+                      title: "water",
+                      photo: "../burritobowl.jpg",
+                      price: "1",
+                      description: "enslaved moisture"
+                    },
+                    {
+                      title: "new stuff",
+                      photo: "../burritobowl.jpg",
+                      price: "1",
+                      description: "enslaved moisture"
+                    }
+                  ]
+                },
+                {
+                  title: "Drinks",
+                  photo: "../drinks.jpg",
+                  items: [
+                    {
+                      title: "water",
+                      photo: "../burritobowl.jpg",
+                      price: "1",
+                      description: "enslaved moisture"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
               title: 'vendor 2',
               photo: '../vendor2.jpg',
-              items: [
+              menus: [
                 {
-                  title: "water",
-                  photo: "../water.gif",
-                  price: "$1",
-                  description: "drink it"
+                  title: "Food",
+                  photo: "../menu.jpg",
+                  items: [
+                    {
+                      title: "water",
+                      photo: "../burritobowl.jpg",
+                      price: "1",
+                      description: "enslaved moisture"
+                    },
+                    {
+                      title: "new stuff",
+                      photo: "../burritobowl.jpg",
+                      price: "1",
+                      description: "enslaved moisture"
+                    }
+                  ]
+                },
+                {
+                  title: "Drinks",
+                  photo: "../drinks.jpg",
+                  items: [
+                    {
+                      title: "water",
+                      photo: "../burritobowl.jpg",
+                      price: "1",
+                      description: "enslaved moisture"
+                    }
+                  ]
                 }
               ]
             }
@@ -148,7 +274,7 @@ class Mobile extends Component {
           <div key={index} className="mItem">
             <div className="item1"><img alt={item.title} className="itemThumbnail" src={item.photo} /></div>
             <div className="item2">{item.title}</div>
-            <div className="item3">Description is longer than the container can show</div>
+            <div className="item3">{item.description}</div>
             <div onClick={() => this.createOrder(item.title)} className="item4"><img className="add" alt="add item" src="../add.svg"></img></div>
           </div>)
       });
