@@ -19,5 +19,6 @@ mongoose.connect(
     { useNewUrlParser: true }
 );
 
+mongoose.set('useFindAndModify', false);
 
 app.listen(port, () => console.log(`Listening on port ${port}`));
