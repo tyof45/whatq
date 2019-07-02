@@ -11,8 +11,15 @@ router.route("/api/vendor/:id")
     .put(vendorsController.update)
     .delete(vendorsController.remove);
 
-// router.route("/api/vendor/:id/menus")
+router.route("/api/vendor/:id/menus")
+    .get(vendorsController.getMenus)
+    .put(vendorsController.updateMenu)
+    .delete(vendorsController.deleteMenu);
 
-// router.route("/api/vendor/:id/menuItems")
+router.route("/api/vendor/:id/menuItems")
+    .post(vendorsController.createItem)
+    .get(vendorsController.getItems)
+    .put(vendorsController.updateItem)
+    .delete(vendorsController.deleteItem);
 
 module.exports = router;
