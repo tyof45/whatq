@@ -1,6 +1,7 @@
 {
-  "name": "cra-plus-express",
-  "version": "1.17.0",
+  "name": "whatq",
+  "version": "0.1.0",
+  "private": true,
   "scripts": {
     "client": "cd client && npm start",
     "server": "server.js",
@@ -9,9 +10,10 @@
   },
   "dependencies": {
     "body-parser": "^1.18.3",
+    "concurrently": "^4.1.1",
     "express": "^4.16.4",
-    "yarn": "^1.16.0",
-    "mongoose": "^5.6.0"
+    "mongoose": "^5.6.0",
+    "yarn": "^1.16.0"
   },
   "eslintConfig": {
     "extends": "react-app"
