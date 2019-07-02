@@ -10,12 +10,12 @@ class Mobile extends Component {
     this.state = {
       events: [
         {
-          title: 'event 1',
+          title: 'LA County Fair',
           address: '1101 W. McKinley Ave. Pomona, CA 91768',
           photo: '../event1.jpg',
           vendors: [
             {
-              title: 'vendor 1',
+              title: 'Searbirds Truck',
               photo: '../vendor1.jpeg',
               menus: [
                 {
@@ -273,9 +273,9 @@ class Mobile extends Component {
         return (
           <div key={index} className="mItem">
             <div className="item1"><img alt={item.title} className="itemThumbnail" src={item.photo} /></div>
-            <div className="item2">{item.title}</div>
+            <div className="item2">{item.title} - <span>{item.price}</span></div>
             <div className="item3">{item.description}</div>
-            <div onClick={() => this.createOrder(item.title)} className="item4"><img className="add" alt="add item" src="../add.svg"></img></div>
+            <div onClick={() => this.createOrder(item)} className="item4"><img className="add" alt="add item" src="../add.svg"></img></div>
           </div>)
       });
 

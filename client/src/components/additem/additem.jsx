@@ -18,6 +18,8 @@ class AddItem extends Component {
         <Modal show={this.state.show} handleClose={this.hideModal}>
           <h3>Add Item</h3>
           <input type="text>" placeholder="Item Title"></input>
+          <input type="text>" placeholder="Item Descrirption"></input>
+          <input type="text>" placeholder="Item Price"></input>
           <input type="file" />
           <button className="modalButton" type="submit">Submit</button>
         </Modal>

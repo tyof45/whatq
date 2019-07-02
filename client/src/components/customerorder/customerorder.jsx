@@ -19,16 +19,21 @@ class CustomerOrder extends Component {
   render() {
 
     const customerOrder = this.props.order.map((item, index) => (
-      <div key={index}>{item}</div>
+      <div key={index} className="shoppingCart">
+        <div className="shoppingCartItem"><img alt="delete" className="add" src="../delete.svg" /></div>
+        <div className="shoppingCartItem">{item.title}</div>
+        <div className="shoppingCartItem"><h3>{item.price}</h3></div>
+      </div>
     ));
 
     return (
 
       <main>
         <Modal show={this.state.show} handleClose={this.hideModal}>
-          <h3>My Order</h3>
+          <h1 id="shoppingCartTitle">My Order</h1>
+          <div className="rule"></div>
           {customerOrder}
-          <button className="modalButton" type="submit">Submit</button>
+          <button className="orderSubmit" type="submit">Submit</button>
         </Modal>
         <div onClick={this.showModal} id="customerOrder">
           My Order (

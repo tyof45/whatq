@@ -27,7 +27,7 @@ class Builder extends Component {
             {
               title: "burger",
               photo: "../burritobowl.jpg",
-              price: "",
+              price: "1",
               description: ""
             }
           ]
@@ -39,7 +39,7 @@ class Builder extends Component {
             {
               title: "water",
               photo: "../water.gif",
-              price: "",
+              price: "1",
               description: ""
             }
           ]
@@ -63,12 +63,6 @@ class Builder extends Component {
   };
 
   vendorEventAdd = (eventTitle) => {
-    // let orderEventAdd = [];
-    // orderEventAdd.push(itemTitle);
-    // for (let i = 0; i < this.state.attending.length; i++) {
-    //   orderEventAdd.push(this.state.attending[i]);
-    // }
-    // this.setState({ attending: orderEventAdd });
     console.log(eventTitle);
   }
 
@@ -91,7 +85,7 @@ class Builder extends Component {
         <div className="items">
           <div className="item">
             <img alt="menu item" src={item.photo} />
-            <p className="itemTitle">{item.title}</p>
+            <p className="itemTitle">{item.title} - {item.price}</p>
           </div>
         </div>
       </div>)
