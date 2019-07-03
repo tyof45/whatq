@@ -33,20 +33,16 @@ export default {
     deleteMenu: function() {
         return axios.delete("/api/vendor/:id/menus");
       },
-    //create an item
-    createItem: function() {
-        return axios.post("/api/vendor/:id/menuItems");
-      },
     //get items
     getItems: function() {
-        return axios.get("/api/vendor/:id/menuItems");
+        return axios.get("/api/vendor/:id/:menus/items");
       },
     //update menus
     updateItem: function() {
-        return axios.put("/api/vendor/:id/menuItems");
+        return axios.put("/api/vendor/:id/:title/items");
       },
     //delete menu
     deleteItem: function() {
-        return axios.delete("/api/vendor/:id/menuItems");
+        return axios.delete("/api/vendor/:id/:menutitle/items");
       } 
 };

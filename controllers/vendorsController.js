@@ -43,7 +43,7 @@ module.exports = {
   },
   updateMenu: function(req, res) {
     db.Vendor
-      .findOneAndUpdate({ _id: req.params.id }, req.body)
+      .findOneAndUpdate({ _id: req.params.id }, {$push: {menus: req.body}})
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
@@ -54,22 +54,16 @@ module.exports = {
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
-  createItem: function(req, res) {
-    db.Vendor
-      .create(req.body)
-      .then(dbModel => res.json(dbModel))
-      .catch(err => res.status(422).json(err));
-  },
   getItems: function(req, res) {
     db.Vendor
-      .find(req.query)
+      .findOne({_id: req.params.id}, {menus: req.params.menus})
       .sort({ name: -1 })
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
   updateItem: function(req, res) {
     db.Vendor
-      .findOneAndUpdate({ _id: req.params.id }, req.body)
+      .updateOne({ _id: req.params.id, "menus.title": req.params.title}, {$push: {"menus.$.items": req.body}})
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },

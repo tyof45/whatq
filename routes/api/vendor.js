@@ -16,8 +16,7 @@ router.route("/api/vendor/:id/menus")
     .put(vendorsController.updateMenu)
     .delete(vendorsController.deleteMenu);
 
-router.route("/api/vendor/:id/menuItems")
-    .post(vendorsController.createItem)
+router.route("/api/vendor/:id/:title/items")
     .get(vendorsController.getItems)
     .put(vendorsController.updateItem)
     .delete(vendorsController.deleteItem);
