@@ -1,3 +1,4 @@
+import axios from 'axios';
 import React, { Component } from 'react';
 import Modal from '../modal/modal';
 
@@ -16,8 +17,11 @@ class CustomerOrder extends Component {
     this.setState({ show: false });
   };
 
-  render() {
+  sendOrder = () => {
 
+  }
+
+  render() {
     const customerOrder = this.props.order.map((item, index) => (
       <div key={index}>{item}</div>
     ));
@@ -28,17 +32,14 @@ class CustomerOrder extends Component {
         <Modal show={this.state.show} handleClose={this.hideModal}>
           <h3>My Order</h3>
           {customerOrder}
-          <button className="modalButton" type="submit">Submit</button>
+          <button className="modalButton" type="submit" onClick={this.sendOrder}>Submit</button>
         </Modal>
         <div onClick={this.showModal} id="customerOrder">
           My Order (
-        {this.props.order.length}
+          {this.props.order.length}
           )
-      </div>
+        </div>
       </main>
-
-
-
 
 
     );
