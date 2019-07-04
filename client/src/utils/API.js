@@ -35,7 +35,7 @@ export default {
       },
     //get items
     getItems: function() {
-        return axios.get("/api/vendor/:id/:menus/items");
+        return axios.get("/api/vendor/:id/:title/items");
       },
     //update menus
     updateItem: function() {
@@ -43,6 +43,6 @@ export default {
       },
     //delete menu
     deleteItem: function() {
-        return axios.delete("/api/vendor/:id/:menutitle/items");
+        return axios.delete("/api/vendor/:id/:title/items");
       } 
 };

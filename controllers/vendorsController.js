@@ -56,7 +56,7 @@ module.exports = {
   },
   getItems: function(req, res) {
     db.Vendor
-      .findOne({_id: req.params.id}, {menus: req.params.menus})
+      .findOne({_id: req.params.id, "menus.title": req.params.title, "menus.$.items": req.params.items})
       .sort({ name: -1 })
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
