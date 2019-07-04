@@ -246,24 +246,11 @@ class Mobile extends Component {
 
   deleteItem = (itemTitle) => {
     let currentOrder = [];
-    currentOrder.push(itemTitle);
     for (let i = 0; i < this.state.order.length; i++) {
       currentOrder.push(this.state.order[i]);
     }
-
-    // var currentOrder = this.state.order.filter(function (item) { return item !== itemTitle });
-    // console.log(currentOrder);
-    // this.setState({ order: currentOrder });
-
-    // const filteredItems = currentOrder.filter(function (item) {
-    //   return item !== itemTitle;
-    // })
-    // console.log(filteredItems);
-
-    // var index = this.state.order.filter(function (s) { return s !== itemTitle });
     var index = currentOrder.indexOf(itemTitle);
-    currentOrder.slice(index, 1);
-    console.log(currentOrder);
+    currentOrder.splice(index, 1);
     this.setState({ order: currentOrder });
   };
 

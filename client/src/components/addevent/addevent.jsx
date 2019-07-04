@@ -23,7 +23,7 @@ class AddEvent extends Component {
   render() {
 
     const existingEvents = this.props.events.map((event, index) => (
-      <button key={index} onClick={this.props.vendorEventAdd(event)} className="eventButton">+ {event}</button>
+      <button key={index} onClick={() => { this.props.vendorEventAdd(event) }} className="eventButton">+ {event}</button>
     ));
 
     return (

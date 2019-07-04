@@ -14,11 +14,7 @@ class Builder extends Component {
         "Knotts Berry Farm",
         "Pokemon League Finals"
       ],
-      attending: [
-        "Off the Grid",
-        "Panana Night Market",
-        "Eat Drink Vegan"
-      ],
+      attending: [],
       menus: [
         {
           title: "Bowls",
@@ -63,7 +59,15 @@ class Builder extends Component {
   };
 
   vendorEventAdd = (eventTitle) => {
-    console.log(eventTitle);
+
+
+
+    let newVendorEvents = [];
+    newVendorEvents.push(eventTitle);
+    for (let i = 0; i < this.state.attending.length; i++) {
+      newVendorEvents.push(this.state.attending[i]);
+    }
+    this.setState({ attending: newVendorEvents });
   }
 
   render() {
@@ -95,6 +99,11 @@ class Builder extends Component {
       <span key={index} className="attendingTag" value={event}>{event}<img alt="unattend event" onClick={() => this.deleteEvent(event)} src="../close.svg" /></span>
     ));
 
+    let noEvents = null;
+    if (this.state.attending.length < 1) {
+      noEvents = "None"
+    }
+
     return (
       <div className="App" >
         <div id="toolbar">
@@ -104,7 +113,7 @@ class Builder extends Component {
         </div>
         <div id="content">
           <div className="attendingEvents">
-            <h3 className="attendingTitle">My Events: </h3>
+            <h3 className="attendingTitle">My Events: {noEvents}</h3>
             {existingEvents}
           </div>
           <div id="menus">
