@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 import Modal from '../modal/modal';
 
 class AddItem extends Component {
@@ -17,7 +17,7 @@ class AddItem extends Component {
       <main>
         <Modal show={this.state.show} handleClose={this.hideModal}>
           <h3>Add Item</h3>
-          <input type="text>" placeholder="Item Title"></input>
+          <input type="text>" placeholder="Item Title" />
           <input type="file" />
           <button className="modalButton" type="submit">Submit</button>
         </Modal>

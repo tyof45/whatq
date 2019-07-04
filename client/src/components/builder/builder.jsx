@@ -1,26 +1,28 @@
-import axios from 'axios';
+
 import React, { Component } from 'react';
 import AddMenu from '../addmenu/addmenu';
 import AddItem from '../additem/additem';
 import AddEvent from '../addevent/addevent';
-        // 'LA County Fair',
-        // 'Off the Grid',
-        // 'Eat Drink Vegan',
-        // 'Knotts Berry Farm',
-        // 'Pokemon League Finals',
+
+import API from '../../utils/API';
+// 'LA County Fair',
+// 'Off the Grid',
+// 'Eat Drink Vegan',
+// 'Knotts Berry Farm',
+// 'Pokemon League Finals',
 class Builder extends Component {
   constructor(props) {
     super(props);
     this.state = {
       events: [
         {
-          _id: "al;sdkfjsdl;af",
-          name: "LA County Fair"
+          _id: 'al;sdkfjsdl;af',
+          name: 'LA County Fair',
         },
         {
-          _id: "asdlkf",
-          name: "Off the Grid"
-        }
+          _id: 'asdlkf',
+          name: 'Off the Grid',
+        },
       ],
       attending: [
         'Off the Grid',
@@ -59,23 +61,14 @@ class Builder extends Component {
   }
 
   componentDidMount() {
-    axios.get('http://localhost:5000/api/events')
-      .then((result) => {
-        console.log(result.data);
-        // this.setState({ events: result.data });
+    API.getEvents()
+      .then((data) => {
         const newEvents = [];
-        for (let i = 0; i < result.data.length; i += 1) {
-          newEvents.push(
-            {
-              _id: result.data[i]._id,
-              name: result.data[i].name,
-            },
-          );
+        for (let i = 0; i < data.data.length; i += 1) {
+          newEvents.push({ _id: data.data[i]._id, name: data.data[i].name });
         }
-        console.log(newEvents);
         this.setState({ events: newEvents });
       });
-
   }
 
   loadMenu = (menuTitle) => {
@@ -95,7 +88,7 @@ class Builder extends Component {
     //   orderEventAdd.push(this.state.attending[i]);
     // }
     // this.setState({ attending: orderEventAdd });
-    console.log(eventTitle);
+    // console.log(eventTitle);
   }
 
   render() {

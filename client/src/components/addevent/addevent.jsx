@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 import Modal from '../modal/modal';
 
 class AddEvent extends Component {
@@ -8,6 +8,7 @@ class AddEvent extends Component {
     this.state = {
     };
   }
+
   state = { show: false };
 
   showModal = () => {
@@ -19,11 +20,13 @@ class AddEvent extends Component {
   };
 
 
-
   render() {
-
     const existingEvents = this.props.events.map((event, index) => (
-      <button key={index} onClick={this.props.vendorEventAdd(event.name)} className="eventButton">+ {event.name}</button>
+      <button key={index} onClick={this.props.vendorEventAdd(event.name)} className="eventButton">
++
+        {' '}
+        {event.name}
+      </button>
     ));
 
     return (

@@ -2,7 +2,7 @@ const router = require("express").Router();
 const eventsController = require("../../controllers/eventsController");
 
 //displays all events to the consumer
-router.route("/api/events")
+router.route("/all")
   .get(eventsController.readAllEvents)
   .post(eventsController.createEvent)
   // .put()
@@ -10,7 +10,7 @@ router.route("/api/events")
   // eventController.readAllEvents
 
 //display a list of all vendors for a specific event to the consumer
-router.route("/:event/vendors")
+router.route("/:id/vendors")
   .get(eventsController.readAllVendors)
   .put(eventsController.updateVendors)
 //display menu per event per vendor
@@ -20,7 +20,7 @@ router.route("/:vendor/menu")
   // .get(eventsController.showMenu)
 
 router.route("/:event/:vendor/order")
-  .get(eventsController.readOrders) 
+  .get(eventsController.readOrders)
   .post(eventsController.createOrder)
 
 module.exports = router;

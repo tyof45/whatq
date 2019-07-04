@@ -1,7 +1,11 @@
 const router = require("express").Router();
-const eventRoutes = require("./vendor");
+
+// event routes
+const eventRoutes = require("./events");
+router.use("/events", eventRoutes);
 
 // Vendor routes
-router.use("/events", eventRoutes);
+const vendorRoutes = require("./vendor");
+router.use("/vendor", vendorRoutes);
 
 module.exports = router;

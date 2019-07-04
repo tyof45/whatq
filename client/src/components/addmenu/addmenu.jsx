@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 import Modal from '../modal/modal';
 
 class AddMenu extends Component {
@@ -18,7 +18,7 @@ class AddMenu extends Component {
 
         <Modal show={this.state.show} handleClose={this.hideModal}>
           <h3>Add Menu</h3>
-          <input type="text>" placeholder="Menu Title"></input>
+          <input type="text>" placeholder="Menu Title" />
           <input type="file" />
           <button className="modalButton" type="submit">Submit</button>
         </Modal>

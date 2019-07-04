@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import CustomerOrder from "../customerorder/customerorder";
+import CustomerOrder from '../customerorder/customerorder';
 
 // import API from '../utils/API'
 
@@ -19,50 +19,50 @@ class Mobile extends Component {
               photo: '../vendor1.jpeg',
               menus: [
                 {
-                  title: "Food",
-                  photo: "../menu.jpg",
+                  title: 'Food',
+                  photo: '../menu.jpg',
                   items: [
                     {
-                      title: "anything else",
-                      photo: "../water.gif",
-                      price: "$1",
-                      description: "drink it"
+                      title: 'anything else',
+                      photo: '../water.gif',
+                      price: '$1',
+                      description: 'drink it',
                     },
                     {
-                      title: "new stuff",
-                      photo: "../burritobowl.jpg",
-                      price: "$1",
-                      description: "drink it"
-                    }
-                  ]
+                      title: 'new stuff',
+                      photo: '../burritobowl.jpg',
+                      price: '$1',
+                      description: 'drink it',
+                    },
+                  ],
                 },
                 {
-                  title: "Drinks",
-                  photo: "../drinks.jpg",
+                  title: 'Drinks',
+                  photo: '../drinks.jpg',
                   items: [
                     {
-                      title: "water",
-                      photo: "../water.gif",
-                      price: "$1",
-                      description: "drink it"
-                    }
-                  ]
-                }
-              ]
+                      title: 'water',
+                      photo: '../water.gif',
+                      price: '$1',
+                      description: 'drink it',
+                    },
+                  ],
+                },
+              ],
             },
             {
               title: 'vendor 2',
               photo: '../vendor2.jpg',
               items: [
                 {
-                  title: "water",
-                  photo: "../water.gif",
-                  price: "$1",
-                  description: "drink it"
-                }
-              ]
-            }
-          ]
+                  title: 'water',
+                  photo: '../water.gif',
+                  price: '$1',
+                  description: 'drink it',
+                },
+              ],
+            },
+          ],
         },
         {
           title: 'event 2',
@@ -74,42 +74,38 @@ class Mobile extends Component {
               photo: '../vendor2.jpg',
               items: [
                 {
-                  title: "water",
-                  photo: "../water.gif",
-                  price: "$1",
-                  description: "drink it"
-                }
-              ]
-            }
-          ]
-        }
+                  title: 'water',
+                  photo: '../water.gif',
+                  price: '$1',
+                  description: 'drink it',
+                },
+              ],
+            },
+          ],
+        },
       ],
       order: [],
       vendors: [],
-      currentVendor: "",
+      currentVendor: '',
       menus: [],
       eventTitle: ['Events'],
       address: [],
-      selectedCategory: "Events"
-    }
-  };
+      selectedCategory: 'Events',
+    };
+  }
 
   loadVendors = (eventTitle) => {
-    let index = this.state.events.findIndex(function (event) {
-      return event.title === eventTitle;
-    });
-    this.setState({ selectedCategory: "Vendors", vendors: this.state.events[index].vendors, eventTitle: this.state.events[index].title });
+    const index = this.state.events.findIndex(event => event.title === eventTitle);
+    this.setState({ selectedCategory: 'Vendors', vendors: this.state.events[index].vendors, eventTitle: this.state.events[index].title });
   };
 
   loadMenus = (vendorTitle) => {
-    let index = this.state.vendors.findIndex(function (vendor) {
-      return vendor.title === vendorTitle;
-    });
-    this.setState({ selectedCategory: "Menus", menus: this.state.vendors[index].menus, currentVendor: vendorTitle });
+    const index = this.state.vendors.findIndex(vendor => vendor.title === vendorTitle);
+    this.setState({ selectedCategory: 'Menus', menus: this.state.vendors[index].menus, currentVendor: vendorTitle });
   };
 
   createOrder = (itemTitle) => {
-    let orderCopy = [];
+    const orderCopy = [];
     orderCopy.push(itemTitle);
     for (let i = 0; i < this.state.order.length; i++) {
       orderCopy.push(this.state.order[i]);
@@ -122,36 +118,31 @@ class Mobile extends Component {
   }
 
   render() {
-    const events = this.state.events.map((event, index) => {
-      return (
+    const events = this.state.events.map((event, index) => (
 
-        <div key={index} onClick={() => this.loadVendors(event.title)} className="mEvent">
-          <img alt={event.title} src={event.photo} />
-          <p className="mEventTitle">{event.title}</p>
-          <p className="mEventAddress">{event.address}</p>
-        </div>
-      )
-    });
+      <div key={index} onClick={() => this.loadVendors(event.title)} className="mEvent">
+        <img alt={event.title} src={event.photo} />
+        <p className="mEventTitle">{event.title}</p>
+        <p className="mEventAddress">{event.address}</p>
+      </div>
+    ));
 
-    const vendors = this.state.vendors.map((vendor, index) => {
-      return (
-        <div key={index} onClick={() => this.loadMenus(vendor.title)} className="mEvent">
-          <img alt={vendor.title} src={vendor.photo} />
-          <p className="vendorTitle">{vendor.title}</p>
-        </div>
-      )
-    });
+    const vendors = this.state.vendors.map((vendor, index) => (
+      <div key={index} onClick={() => this.loadMenus(vendor.title)} className="mEvent">
+        <img alt={vendor.title} src={vendor.photo} />
+        <p className="vendorTitle">{vendor.title}</p>
+      </div>
+    ));
 
     const menus = this.state.menus.map((menu, index) => {
-      const items = menu.items.map((item, index) => {
-        return (
-          <div key={index} className="mItem">
-            <div className="item1"><img alt={item.title} className="itemThumbnail" src={item.photo} /></div>
-            <div className="item2">{item.title}</div>
-            <div className="item3">Description is longer than the container can show</div>
-            <div onClick={() => this.createOrder(item.title)} className="item4"><img className="add" alt="add item" src="../add.svg"></img></div>
-          </div>)
-      });
+      const items = menu.items.map((item, index) => (
+        <div key={index} className="mItem">
+          <div className="item1"><img alt={item.title} className="itemThumbnail" src={item.photo} /></div>
+          <div className="item2">{item.title}</div>
+          <div className="item3">Description is longer than the container can show</div>
+          <div onClick={() => this.createOrder(item.title)} className="item4"><img className="add" alt="add item" src="../add.svg" /></div>
+        </div>
+      ));
 
       return (
         <span className="menuList" key={index}>
@@ -163,7 +154,7 @@ class Mobile extends Component {
             {items}
           </div>
         </span>
-      )
+      );
     });
 
 
@@ -171,21 +162,21 @@ class Mobile extends Component {
     let title = null;
     let previousCategory = null;
     let backButton = null;
-    if (this.state.selectedCategory === "Events") {
-      previousCategory = "";
+    if (this.state.selectedCategory === 'Events') {
+      previousCategory = '';
       renderedItem = events;
-      title = "Events"
-    } else if (this.state.selectedCategory === "Vendors") {
+      title = 'Events';
+    } else if (this.state.selectedCategory === 'Vendors') {
       renderedItem = vendors;
-      title = "Events"
-      previousCategory = "Events";
-      backButton = "< Events"
+      title = 'Events';
+      previousCategory = 'Events';
+      backButton = '< Events';
       title = this.state.eventTitle;
-    } else if (this.state.selectedCategory === "Menus") {
+    } else if (this.state.selectedCategory === 'Menus') {
       renderedItem = menus;
-      title = "Vendors";
-      backButton = "< Vendors"
-      previousCategory = "Vendors";
+      title = 'Vendors';
+      backButton = '< Vendors';
+      previousCategory = 'Vendors';
       title = this.state.currentVendor;
     }
 
