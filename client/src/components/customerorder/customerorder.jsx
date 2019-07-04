@@ -20,7 +20,7 @@ class CustomerOrder extends Component {
 
     const customerOrder = this.props.order.map((item, index) => (
       <div key={index} className="shoppingCart">
-        <div className="shoppingCartItem"><img alt="delete" className="add" src="../delete.svg" /></div>
+        <div onClick={() => { this.props.deleteItem(item.title) }} className="shoppingCartItem"><img alt="delete" className="add" src="../delete.svg" /></div>
         <div className="shoppingCartItem">{item.title}</div>
         <div className="shoppingCartItem"><h3>{item.price}</h3></div>
       </div>

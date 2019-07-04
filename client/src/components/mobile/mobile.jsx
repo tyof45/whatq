@@ -1,12 +1,9 @@
 import React, { Component } from 'react';
 import CustomerOrder from "../customerorder/customerorder";
-
 // import API from '../utils/API'
-
 class Mobile extends Component {
   constructor(props) {
     super(props);
-
     this.state = {
       events: [
         {
@@ -247,6 +244,29 @@ class Mobile extends Component {
     this.setState({ selectedCategory: title });
   }
 
+  deleteItem = (itemTitle) => {
+    let currentOrder = [];
+    currentOrder.push(itemTitle);
+    for (let i = 0; i < this.state.order.length; i++) {
+      currentOrder.push(this.state.order[i]);
+    }
+
+    // var currentOrder = this.state.order.filter(function (item) { return item !== itemTitle });
+    // console.log(currentOrder);
+    // this.setState({ order: currentOrder });
+
+    // const filteredItems = currentOrder.filter(function (item) {
+    //   return item !== itemTitle;
+    // })
+    // console.log(filteredItems);
+
+    // var index = this.state.order.filter(function (s) { return s !== itemTitle });
+    var index = currentOrder.indexOf(itemTitle);
+    currentOrder.slice(index, 1);
+    console.log(currentOrder);
+    this.setState({ order: currentOrder });
+  };
+
   render() {
     const events = this.state.events.map((event, index) => {
       return (
@@ -321,7 +341,7 @@ class Mobile extends Component {
           <div id="backButton" onClick={() => this.goBack(previousCategory)}>
             {backButton}
           </div>
-          <CustomerOrder order={this.state.order} />
+          <CustomerOrder order={this.state.order} deleteItem={this.deleteItem} />
         </div>
         <div id="mTitle">
           {title}
