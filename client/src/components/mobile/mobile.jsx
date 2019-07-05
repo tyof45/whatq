@@ -1,87 +1,23 @@
 import React, { Component } from 'react';
 import CustomerOrder from '../customerorder/customerorder';
-
+import API from '../../utils/API';
 // import API from '../utils/API'
-
 class Mobile extends Component {
   constructor(props) {
     super(props);
-
     this.state = {
       events: [
         {
-          title: 'event 1',
+          title: 'LA County Fair',
           address: '1101 W. McKinley Ave. Pomona, CA 91768',
           photo: '../event1.jpg',
-          vendors: [
-            {
-              title: 'vendor 1',
-              photo: '../vendor1.jpeg',
-              menus: [
-                {
-                  title: 'Food',
-                  photo: '../menu.jpg',
-                  items: [
-                    {
-                      title: 'anything else',
-                      photo: '../water.gif',
-                      price: '$1',
-                      description: 'drink it',
-                    },
-                    {
-                      title: 'new stuff',
-                      photo: '../burritobowl.jpg',
-                      price: '$1',
-                      description: 'drink it',
-                    },
-                  ],
-                },
-                {
-                  title: 'Drinks',
-                  photo: '../drinks.jpg',
-                  items: [
-                    {
-                      title: 'water',
-                      photo: '../water.gif',
-                      price: '$1',
-                      description: 'drink it',
-                    },
-                  ],
-                },
-              ],
-            },
-            {
-              title: 'vendor 2',
-              photo: '../vendor2.jpg',
-              items: [
-                {
-                  title: 'water',
-                  photo: '../water.gif',
-                  price: '$1',
-                  description: 'drink it',
-                },
-              ],
-            },
-          ],
+          vendors: [],
         },
         {
           title: 'event 2',
           address: '1101 W. McKinley Ave. Pomona, CA 91768',
           photo: '../event2.jpg',
-          vendors: [
-            {
-              title: 'vendor 2',
-              photo: '../vendor2.jpg',
-              items: [
-                {
-                  title: 'water',
-                  photo: '../water.gif',
-                  price: '$1',
-                  description: 'drink it',
-                },
-              ],
-            },
-          ],
+          vendors: [],
         },
       ],
       order: [],
@@ -94,8 +30,36 @@ class Mobile extends Component {
     };
   }
 
+  componentDidMount = () => {
+    API.getEvents()
+    .then(
+      (data) => {
+        this.setState({events: []})
+        let eventCopy = this.state.events.slice()
+        for (let i = 0; i < data.data.length; i += 1){
+          eventCopy.push({
+            title: data.data[i].name,
+            address: data.data[i].address,
+            photo: '../event1.jpg',
+            vendors: data.data[i].Vendors,
+            _id: data.data[i]._id
+          });
+        }
+        this.setState({events: eventCopy})
+      }
+    );
+  }
+
   loadVendors = (eventTitle) => {
     const index = this.state.events.findIndex(event => event.title === eventTitle);
+    console.log(index);
+    console.log(this.state.events[index]._id)
+    API.getVendorsFromEvent(this.state.events[index]._id)
+    .then(
+      (data) => {
+        console.log(data.data);
+      }
+    )
     this.setState({ selectedCategory: 'Vendors', vendors: this.state.events[index].vendors, eventTitle: this.state.events[index].title });
   };
 
@@ -116,6 +80,16 @@ class Mobile extends Component {
   goBack = (title) => {
     this.setState({ selectedCategory: title });
   }
+
+  deleteItem = (itemTitle) => {
+    const currentOrder = [];
+    for (let i = 0; i < this.state.order.length; i++) {
+      currentOrder.push(this.state.order[i]);
+    }
+    const index = currentOrder.indexOf(itemTitle);
+    currentOrder.splice(index, 1);
+    this.setState({ order: currentOrder });
+  };
 
   render() {
     const events = this.state.events.map((event, index) => (
@@ -138,9 +112,10 @@ class Mobile extends Component {
       const items = menu.items.map((item, index) => (
         <div key={index} className="mItem">
           <div className="item1"><img alt={item.title} className="itemThumbnail" src={item.photo} /></div>
-          <div className="item2">{item.title}</div>
-          <div className="item3">Description is longer than the container can show</div>
-          <div onClick={() => this.createOrder(item.title)} className="item4"><img className="add" alt="add item" src="../add.svg" /></div>
+          <div className="item2">{item.title}{' '}-{' '}<span>{item.price}</span>
+          </div>
+          <div className="item3">{item.description}</div>
+          <div onClick={() => this.createOrder(item)} className="item4"><img className="add" alt="add item" src="../add.svg" /></div>
         </div>
       ));
 
@@ -186,7 +161,7 @@ class Mobile extends Component {
           <div id="backButton" onClick={() => this.goBack(previousCategory)}>
             {backButton}
           </div>
-          <CustomerOrder order={this.state.order} />
+          <CustomerOrder order={this.state.order} deleteItem={this.deleteItem} />
         </div>
         <div id="mTitle">
           {title}

@@ -24,11 +24,7 @@ class Builder extends Component {
           name: 'Off the Grid',
         },
       ],
-      attending: [
-        'Off the Grid',
-        'Panana Night Market',
-        'Eat Drink Vegan',
-      ],
+      attending: [],
       menus: [
         {
           title: 'Bowls',
@@ -37,7 +33,7 @@ class Builder extends Component {
             {
               title: 'burger',
               photo: '../burritobowl.jpg',
-              price: '',
+              price: '1',
               description: '',
             },
           ],
@@ -49,7 +45,7 @@ class Builder extends Component {
             {
               title: 'water',
               photo: '../water.gif',
-              price: '',
+              price: '1',
               description: '',
             },
           ],
@@ -67,7 +63,8 @@ class Builder extends Component {
         for (let i = 0; i < data.data.length; i += 1) {
           newEvents.push({ _id: data.data[i]._id, name: data.data[i].name });
         }
-        this.setState({ events: newEvents });
+        // this.setState({ events: newEvents });
+        console.log(newEvents)
       });
   }
 
@@ -82,18 +79,16 @@ class Builder extends Component {
   };
 
   vendorEventAdd = (eventTitle) => {
-    // let orderEventAdd = [];
-    // orderEventAdd.push(itemTitle);
-    // for (let i = 0; i < this.state.attending.length; i++) {
-    //   orderEventAdd.push(this.state.attending[i]);
-    // }
-    // this.setState({ attending: orderEventAdd });
-    // console.log(eventTitle);
+    const newVendorEvents = [];
+    newVendorEvents.push(eventTitle);
+    for (let i = 0; i < this.state.attending.length; i++) {
+      newVendorEvents.push(this.state.attending[i]);
+    }
+    this.setState({ attending: newVendorEvents });
   }
 
   render() {
     const menus = this.state.menus.map((menu, index) => (
-
       <div key={index} onClick={() => this.loadMenu(menu.title)} className="menu">
         <img alt={menu.title} src={menu.photo} />
         <p className="menuTitle">{menu.title}</p>
@@ -107,18 +102,22 @@ class Builder extends Component {
         <div className="items">
           <div className="item">
             <img alt="menu item" src={item.photo} />
-            <p className="itemTitle">{item.title}</p>
+            <p className="itemTitle">{item.title}{' '}-{' '}{item.price}</p>
           </div>
         </div>
       </div>
     ));
 
     const existingEvents = this.state.attending.map((event, index) => (
-      <span className="attendingTag" value={event}>
-        {event}
-        <img alt="unattend event" onClick={() => this.deleteEvent(event)} src="../close.svg" />
+      <span key={index} className="attendingTag" value={event}>
+        {event}<img alt="unattend event" onClick={() => this.deleteEvent(event)} src="../close.svg" />
       </span>
     ));
+
+    let noEvents = null;
+    if (this.state.attending.length < 1) {
+      noEvents = 'None';
+    }
 
     return (
       <div className="App">
@@ -131,7 +130,11 @@ class Builder extends Component {
         </div>
         <div id="content">
           <div className="attendingEvents">
-            <h3 className="attendingTitle">My Events: </h3>
+            <h3 className="attendingTitle">
+My Events:
+              {' '}
+              {noEvents}
+                        </h3>
             {existingEvents}
           </div>
           <div id="menus">

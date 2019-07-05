@@ -10,8 +10,8 @@ export default {
     return axios.get('/api/vendor');
   },
   // get vendor by ID
-  findVendor() {
-    return axios.get('/api/vendor/:id');
+  findVendor(id) {
+    return axios.get('/api/vendor/' + id);
   },
   // update vendor by ID
   updateVendor() {
@@ -49,4 +49,7 @@ export default {
   getEvents() {
     return axios.get('/api/events/all');
   },
+  getVendorsFromEvent(id) {
+    return axios.get('/api/events/' + id + '/vendors')
+  }
 };

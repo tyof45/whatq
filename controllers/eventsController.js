@@ -12,7 +12,7 @@ module.exports = {
   },
   readAllVendors: function(req, res) {
     db.Event
-      .findById(req.params.event, "Vendors")
+      .findById(req.params.id, "Vendors")
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },

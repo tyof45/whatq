@@ -7,6 +7,21 @@ class Login extends Component {
     };
   }
 
+  // handleClick = (event) => {
+  //   const message = `${this.state.username}`;
+  //   window.alert(message);
+  // }
+
+  // submitLogin = (event) => {
+  //   console.log(event.target.name);
+  //   console.log(event.target.value);
+  //   const name = event.target.name;
+  //   const value = event.target.value;
+  //   this.setState({
+  //     [name]: value
+  //   });
+  // };
+
   render() {
     return (
       <div className="App">
