@@ -147,13 +147,8 @@ class Builder extends Component {
     let index = this.state.menus.findIndex(function (menu) {
       return menu.title === targetMenu
     });
-
     menus[index].items.push(newItem);
-    // console.log(menus);
     this.setState({ menus: menus });
-    console.log(this.state.menus);
-    console.log(this.state.items);
-
     let id = "5d1ffc8f4fc3ca48b4cc861f"
     API.updateMenu(id, menus)
     .then((data)=>{
@@ -164,7 +159,6 @@ class Builder extends Component {
   render() {
     const menus = this.state.menus.map((menu, index) => {
       return (
-
         <div key={index} onClick={() => this.loadMenu(menu.title)} className="menu">
           <img alt={menu.title} src={menu.photo} />
           <p className="menuTitle">{menu.title}</p>
@@ -220,9 +214,8 @@ My Events:
           </div>
         </div>
       </div>
-
-    );
-  }
+    )
+  };
 }
 
 export default Builder;

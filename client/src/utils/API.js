@@ -59,6 +59,6 @@ export default {
     return axios.put('/api/events/' + vendorId + '/join', body)
   },
   createOrder (id, body) {
-    return axios.post('/api/vendors/event/' + id + '/order', body)
+    return axios.post('/api/events/event/' + id + '/order', body)
   }
 }

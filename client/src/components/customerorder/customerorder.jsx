@@ -4,7 +4,6 @@ import Modal from '../modal/modal';
 class CustomerOrder extends Component {
   constructor(props) {
     super(props);
-
     this.state = { show: false };
   }
 
@@ -32,7 +31,6 @@ class CustomerOrder extends Component {
     ));
 
     return (
-
       <main>
         <Modal show={this.state.show} handleClose={this.hideModal}>
           <h1 id="shoppingCartTitle">My Order</h1>
@@ -46,8 +44,6 @@ class CustomerOrder extends Component {
           )
         </div>
       </main>
-
-
     );
   }
 }

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import CustomerOrder from '../customerorder/customerorder';
 import API from '../../utils/API';
 import axios from 'axios';
-// import API from '../utils/API'
+
 class Mobile extends Component {
   constructor(props) {
     super(props);
@@ -22,12 +22,15 @@ class Mobile extends Component {
         },
       ],
       order: [],
+      customerOrder: '',
+      vendorId: '',
       vendors: [],
       currentVendor: '',
       menus: [],
       eventTitle: ['Events'],
       address: [],
       selectedCategory: 'Events',
+      userName: ""
     };
   }
 
@@ -51,22 +54,25 @@ class Mobile extends Component {
     );
   }
 
+
+  setUser = () => {
+    this.setState({ userName: this.props.name });
+  }
+
   loadVendors = (eventTitle) => {
     const index = this.state.events.findIndex(event => event.title === eventTitle);
-    console.log(this.state.events[index].vendors)
-    let searchIds = JSON.stringify({ids: this.state.events[index].vendors})
-    console.log(searchIds);
     axios.patch("/api/events/asdf/vendors", {ids: this.state.events[index].vendors})
       .then((data) => {
         console.log(data.data)
         this.setState({ selectedCategory: 'Vendors', vendors: data.data, eventTitle: this.state.events[index].title });
       })
-    
+    this.setUser();
   };
 
   loadMenus = (vendorTitle) => {
     const index = this.state.vendors.findIndex(vendor => vendor.title === vendorTitle);
-    this.setState({ selectedCategory: 'Menus', menus: this.state.vendors[index].menus, currentVendor: vendorTitle });
+    console.log(this.state.vendors[index]._id)
+    this.setState({ selectedCategory: 'Menus', menus: this.state.vendors[index].menus, currentVendor: vendorTitle, vendorId: this.state.vendors[index]._id });
   };
 
   createOrder = (itemTitle) => {
@@ -76,6 +82,11 @@ class Mobile extends Component {
       orderCopy.push(this.state.order[i]);
     }
     this.setState({ order: orderCopy });
+    let customerOrder = {
+      customer: this.state.userName,
+      items: orderCopy
+    }
+    this.setState({ customerOrder: customerOrder });
   }
 
   goBack = (title) => {
@@ -93,19 +104,25 @@ class Mobile extends Component {
   };
 
   resetOrder = () => {
-    console.log(this.state.order)
+    console.log(this.state.customerOrder);
+    API.createOrder(this.state.vendorId, this.state.customerOrder).then(
+      (data) => {
+        console.log(data)
+      }
+    )
     this.setState({ order: [] });
   }
 
   render() {
-    const events = this.state.events.map((event, index) => (
-
-      <div key={index} onClick={() => this.loadVendors(event.title)} className="mEvent">
-        <img alt={event.title} src={event.photo} />
-        <p className="mEventTitle">{event.title}</p>
-        <p className="mEventAddress">{event.address}</p>
-      </div>
-    ));
+    const events = this.state.events.map((event, index) => {
+      return (
+        <div key={index} onClick={() => this.loadVendors(event.title)} className="mEvent">
+          <img alt={event.title} src={event.photo} />
+          <p className="mEventTitle">{event.title}</p>
+          <p className="mEventAddress">{event.address}</p>
+        </div>
+      )
+    });
 
     const vendors = this.state.vendors.map((vendor, index) => (
       <div key={index} onClick={() => this.loadMenus(vendor.title)} className="mEvent">
@@ -167,13 +184,12 @@ class Mobile extends Component {
           <div id="backButton" onClick={() => this.goBack(previousCategory)}>
             {backButton}
           </div>
-          <CustomerOrder order={this.state.order} deleteItem={this.deleteItem} resetOrder={this.resetOrder} />
+          <CustomerOrder userName={this.state.userName} order={this.state.order} deleteItem={this.deleteItem} resetOrder={this.resetOrder} />
         </div>
         <div id="mTitle">
           {title}
         </div>
         {renderedItem}
-
       </div>
     );
   }

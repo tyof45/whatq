@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
+import { Link } from "react-router-dom";
 
 class Login extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      name: "test"
+      name: ""
     };
   }
 
@@ -13,7 +14,6 @@ class Login extends Component {
     this.setState({
       name: value
     });
-    console.log(this.state.name);
   };
 
   render() {
@@ -27,7 +27,11 @@ class Login extends Component {
             <br />
             <input type="password" placeholder="password" />
             <br />
-            <a href="/mobile"><button className="loginButton" type="submit">Log In</button></a>
+            <Link to="/mobile">
+              <button onClick={() => { this.props.loginName(this.state.name) }} className="loginButton" type="submit">
+                Log In
+              </button>
+            </Link>
           </div>
         </div>
       </div>

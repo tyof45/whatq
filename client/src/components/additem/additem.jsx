@@ -23,20 +23,6 @@ class AddItem extends Component {
     this.setState({ show: false });
   }
 
-  // onChangeItem = (e) => {
-  //   this.setState({
-  //     newItem: [
-  //       {
-  //         [e.target.name]: e.target.value,
-  //         [e.target.name]: e.target.value,
-  //         [e.target.name]: e.target.value,
-  //         photo: "../burritobowl.jpg"
-  //       }
-  //     ]
-  //   });
-  //   console.log(this.state.newItem)
-  // }
-
   onChangeTargetMenu = (e) => {
     this.setState({
       targetMenu: e.target.value

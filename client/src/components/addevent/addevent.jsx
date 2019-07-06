@@ -4,7 +4,6 @@ import Modal from '../modal/modal';
 class AddEvent extends Component {
   constructor(props) {
     super(props);
-
     this.state = {
     };
   }
@@ -18,13 +17,11 @@ class AddEvent extends Component {
   hideModal = () => {
     this.setState({ show: false });
   };
-
-
+  
   render() {
     const existingEvents = this.props.events.map((event, index) => (
       <button key={index} onClick={() => { this.props.vendorEventAdd(event.name) }} className="eventButton">+ {event.name}</button>
     ));
-
     return (
       <main>
         <Modal show={this.state.show} handleClose={this.hideModal}>

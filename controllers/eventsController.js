@@ -42,6 +42,8 @@ module.exports = {
       .catch(err => res.status(422).json(err))
   },
   createOrder: function(req, res) {
+    console.log(req.body);
+    console.log(req.params.vendor)
     db.Orders
       .update({restaurant: req.params.vendor}, {$push: {orders: req.body}})
       .then(dbModel => res.json(dbModel))
