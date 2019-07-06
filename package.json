@@ -4,9 +4,10 @@
   "private": true,
   "scripts": {
     "client": "cd client && npm run start",
-    "server": "server.js",
+    "server": "node server.js",
     "dev": "concurrently --kill-others-on-fail \"node server\" \"yarn client\"",
     "start": "node server.js",
+    "build": "cd client && npm run build",
     "heroku-postbuild": "npm run build"
   },
   "dependencies": {
