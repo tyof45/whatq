@@ -3,10 +3,11 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "client": "cd client && npm start",
+    "client": "cd client && npm run start",
     "server": "server.js",
     "dev": "concurrently --kill-others-on-fail \"node server\" \"yarn client\"",
-    "start": "node server.js"
+    "start": "node server.js",
+    "heroku-postbuild": "npm run build"
   },
   "dependencies": {
     "body-parser": "^1.18.3",
