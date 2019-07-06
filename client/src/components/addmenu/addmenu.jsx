@@ -24,12 +24,9 @@ class AddMenu extends Component {
     this.setState({ newMenu: e.target.value });
   }
 
-
-
   render() {
     return (
       <main>
-
         <Modal show={this.state.show} handleClose={this.hideModal}>
           <h3>Add Menu</h3>
           <input onChange={this.onChangeMenu} name="title" type="text" placeholder="Menu Title"></input>

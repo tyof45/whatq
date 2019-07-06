@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import CustomerOrder from "../customerorder/customerorder";
-// import API from '../utils/API'
+
 class Mobile extends Component {
   constructor(props) {
     super(props);
@@ -208,16 +208,23 @@ class Mobile extends Component {
         }
       ],
       order: [],
+      customerOrder: '',
       vendors: [],
       currentVendor: "",
       menus: [],
       eventTitle: ['Events'],
       address: [],
-      selectedCategory: "Events"
+      selectedCategory: "Events",
+      userName: ""
     }
   };
 
+  setUser = () => {
+    this.setState({ userName: this.props.name });
+  }
+
   loadVendors = (eventTitle) => {
+    this.setUser();
     let index = this.state.events.findIndex(function (event) {
       return event.title === eventTitle;
     });
@@ -238,6 +245,11 @@ class Mobile extends Component {
       orderCopy.push(this.state.order[i]);
     }
     this.setState({ order: orderCopy });
+    let customerOrder = {
+      customer: this.state.userName,
+      items: orderCopy
+    }
+    this.setState({ customerOrder: customerOrder });
   }
 
   goBack = (title) => {
@@ -259,9 +271,9 @@ class Mobile extends Component {
   }
 
   render() {
+
     const events = this.state.events.map((event, index) => {
       return (
-
         <div key={index} onClick={() => this.loadVendors(event.title)} className="mEvent">
           <img alt={event.title} src={event.photo} />
           <p className="mEventTitle">{event.title}</p>
@@ -332,13 +344,12 @@ class Mobile extends Component {
           <div id="backButton" onClick={() => this.goBack(previousCategory)}>
             {backButton}
           </div>
-          <CustomerOrder order={this.state.order} deleteItem={this.deleteItem} resetOrder={this.resetOrder} />
+          <CustomerOrder userName={this.state.userName} order={this.state.order} deleteItem={this.deleteItem} resetOrder={this.resetOrder} />
         </div>
         <div id="mTitle">
           {title}
         </div>
         {renderedItem}
-
       </div>
     );
   }

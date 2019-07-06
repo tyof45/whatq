@@ -11,12 +11,12 @@ class Header extends Component {
     return (
       <a href="/builder">
         <header>
-
           <img alt="logo" src="../logo.svg" />
-
           whatQ
-  
-      </header >
+          <p className="vendorUserName">
+            ProAbition
+          </p>
+        </header >
       </a>
     );
   }

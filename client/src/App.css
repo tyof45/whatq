@@ -35,7 +35,7 @@ a:visited {
   width: 220px;
   height: 35px;
   padding: 10px;
-  margin: 2px;
+  margin: 15px 2px 0 2px;
   background-color: rgb(0, 183, 255);
   color: rgb(255, 255, 255);
 }
@@ -182,8 +182,8 @@ header>img {
 }
 
 .item>img {
-  width: 100%;
-  height: auto;
+  width: auto;
+  height: 100%;
 }
 
 .item>img {
@@ -586,6 +586,13 @@ select {
   width: 220px;
   height: 35px;
   display: block;
+}
+
+.vendorUserName {
+  position: absolute;
+  right: 15px;
+  bottom: 1px;
+  color: rgb(0, 183, 255);
 }
 
 @media only screen and (max-width: 600px) {

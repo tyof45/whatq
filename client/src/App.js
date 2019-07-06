@@ -8,12 +8,10 @@ import Mobile from './components/mobile/mobile';
 class App extends Component {
   constructor(props) {
     super(props);
-
     this.state = {
       name: "hello"
     };
   }
-
 
   render() {
     return (
@@ -27,6 +25,5 @@ class App extends Component {
     );
   }
 }
-
 
 export default App;
