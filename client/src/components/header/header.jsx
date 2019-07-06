@@ -9,10 +9,15 @@ class Header extends Component {
 
   render() {
     return (
-      <header>
-        <img alt="logo" src="../logo.svg" />
-        whatQ
-      </header>
+      <a href="/builder">
+        <header>
+
+          <img alt="logo" src="../logo.svg" />
+
+          whatQ
+  
+      </header >
+      </a>
     );
   }
 }

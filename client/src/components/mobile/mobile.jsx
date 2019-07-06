@@ -254,6 +254,10 @@ class Mobile extends Component {
     this.setState({ order: currentOrder });
   };
 
+  resetOrder = () => {
+    this.setState({ order: [] });
+  }
+
   render() {
     const events = this.state.events.map((event, index) => {
       return (
@@ -328,7 +332,7 @@ class Mobile extends Component {
           <div id="backButton" onClick={() => this.goBack(previousCategory)}>
             {backButton}
           </div>
-          <CustomerOrder order={this.state.order} deleteItem={this.deleteItem} />
+          <CustomerOrder order={this.state.order} deleteItem={this.deleteItem} resetOrder={this.resetOrder} />
         </div>
         <div id="mTitle">
           {title}

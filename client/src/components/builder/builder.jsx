@@ -59,15 +59,38 @@ class Builder extends Component {
   };
 
   vendorEventAdd = (eventTitle) => {
-
-
-
     let newVendorEvents = [];
     newVendorEvents.push(eventTitle);
     for (let i = 0; i < this.state.attending.length; i++) {
       newVendorEvents.push(this.state.attending[i]);
     }
     this.setState({ attending: newVendorEvents });
+  }
+
+  addMenu = (newMenu) => {
+    let newMenus = [];
+    newMenus.push({ title: newMenu, photo: "../menu.jpg", items: [] });
+    for (let i = 0; i < this.state.menus.length; i++) {
+      newMenus.push(this.state.menus[i]);
+    }
+    this.setState({ menus: newMenus });
+  }
+
+  addItem = (targetMenu, itemTitle, itemDescription, itemPrice) => {
+    let newItem = { title: itemTitle, photo: "../burritobowl.jpg", description: itemDescription, price: itemPrice }
+    let menus = [];
+    for (let i = 0; i < this.state.menus.length; i++) {
+      menus.push(this.state.menus[i]);
+    }
+    let index = this.state.menus.findIndex(function (menu) {
+      return menu.title === targetMenu
+    });
+
+    menus[index].items.push(newItem);
+    // console.log(menus);
+    this.setState({ menus: menus });
+    console.log(this.state.menus);
+    console.log(this.state.items);
   }
 
   render() {
@@ -83,16 +106,12 @@ class Builder extends Component {
     });
 
     const items = this.state.items.map((item, index) => {
-      return (<div key={index} className="section">
-        <p className="sectionTitle">{this.state.title}</p>
-        <div className="rule"></div>
-        <div className="items">
-          <div className="item">
-            <img alt="menu item" src={item.photo} />
-            <p className="itemTitle">{item.title} - {item.price}</p>
-          </div>
+      return (
+        <div key={index} className="item">
+          <img alt="menu item" src={item.photo} />
+          <p className="itemTitle">{item.title} ... ${item.price}</p>
         </div>
-      </div>)
+      )
     });
 
     const existingEvents = this.state.attending.map((event, index) => (
@@ -107,8 +126,8 @@ class Builder extends Component {
     return (
       <div className="App" >
         <div id="toolbar">
-          <AddMenu />|
-          <AddItem />|
+          <AddMenu addMenu={this.addMenu} />|
+          <AddItem addItem={this.addItem} menus={this.state.menus} />|
           <AddEvent vendorEventAdd={this.vendorEventAdd} events={this.state.events} />
         </div>
         <div id="content">
@@ -119,9 +138,15 @@ class Builder extends Component {
           <div id="menus">
             {menus}
           </div>
-          {items}
+          <div className="section">
+            <p className="sectionTitle">{this.state.title}</p>
+            <div className="rule"></div>
+            <div className="items">
+              {items}
+            </div>
+          </div>
         </div>
-      </div >
+      </div>
 
     )
   };
