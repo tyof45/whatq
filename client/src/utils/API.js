@@ -26,8 +26,8 @@ export default {
     return axios.get('/api/vendor/:id/menus');
   },
   // update menus
-  updateMenu(id) {
-    return axios.put('/api/vendor/' + id + '/menus');
+  updateMenu(id, body) {
+    return axios.put('/api/vendor/' + id + '/menus', body);
   },
   // get menus
   deleteMenu() {
@@ -52,6 +52,13 @@ export default {
   getVendorsFromEvent(body) {
     let data = {ids: body};
     console.log(data);
-    return axios.patch('/api/events/asdf/vendors', data);
+    return axios.post('/api/events/asdf/vendors', data);
+  },
+  joinEvent (vendorId, body) {
+    console.log(body)
+    return axios.put('/api/events/' + vendorId + '/join', body)
+  },
+  createOrder (id, body) {
+    return axios.post('/api/vendors/event/' + id + '/order', body)
   }
 }

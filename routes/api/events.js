@@ -23,4 +23,7 @@ router.route("/:event/:vendor/order")
   .get(eventsController.readOrders)
   .post(eventsController.createOrder)
 
+router.route("/:vendor/join")
+  .put(eventsController.joinEvents);
+  
 module.exports = router;

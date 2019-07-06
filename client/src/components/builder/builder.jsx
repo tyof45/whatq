@@ -78,7 +78,18 @@ class Builder extends Component {
       .then((data) => {
         console.log(data.data.menus)
         this.setState({ menus: data.data.menus})
+        this.setState({ attending: data.data.events})
       })
+
+  }
+
+  componentWillUnmount() {
+    let id = "5d1ffc8f4fc3ca48b4cc861f"
+    console.log(this.state.menus)
+    API.updateMenu(id, this.state.menus)
+    .then((data)=>{
+      console.log(data);
+    })
   }
 
   loadMenu = (menuTitle) => {
@@ -89,37 +100,86 @@ class Builder extends Component {
   deleteEvent = (eventTitle) => {
     const array = this.state.attending.filter(s => s !== eventTitle);
     this.setState({ attending: array });
+    API.joinEvent("5d1ffc8f4fc3ca48b4cc861f", {events: array})
+    .then(
+      (data) => {
+        console.log(data);
+      }
+    )
   };
 
   vendorEventAdd = (eventTitle) => {
-    const newVendorEvents = [];
+    let newVendorEvents = [];
     newVendorEvents.push(eventTitle);
     for (let i = 0; i < this.state.attending.length; i++) {
       newVendorEvents.push(this.state.attending[i]);
     }
     this.setState({ attending: newVendorEvents });
+    API.joinEvent("5d1ffc8f4fc3ca48b4cc861f", {events: newVendorEvents})
+    .then(
+      (data) => {
+        console.log(data);
+      }
+    )
+  }
+
+  addMenu = (newMenu) => {
+    let newMenus = [];
+    newMenus.push({ title: newMenu, photo: "../menu.jpg", items: [] });
+    for (let i = 0; i < this.state.menus.length; i++) {
+      newMenus.push(this.state.menus[i]);
+    }
+    this.setState({ menus: newMenus });
+
+    let id = "5d1ffc8f4fc3ca48b4cc861f"
+    API.updateMenu(id, newMenus)
+    .then((data)=>{
+      console.log(data);
+    })
+  }
+
+  addItem = (targetMenu, itemTitle, itemDescription, itemPrice) => {
+    let newItem = { title: itemTitle, photo: "../burritobowl.jpg", description: itemDescription, price: itemPrice }
+    let menus = [];
+    for (let i = 0; i < this.state.menus.length; i++) {
+      menus.push(this.state.menus[i]);
+    }
+    let index = this.state.menus.findIndex(function (menu) {
+      return menu.title === targetMenu
+    });
+
+    menus[index].items.push(newItem);
+    // console.log(menus);
+    this.setState({ menus: menus });
+    console.log(this.state.menus);
+    console.log(this.state.items);
+
+    let id = "5d1ffc8f4fc3ca48b4cc861f"
+    API.updateMenu(id, menus)
+    .then((data)=>{
+      console.log(data);
+    })
   }
 
   render() {
-    const menus = this.state.menus.map((menu, index) => (
-      <div key={index} onClick={() => this.loadMenu(menu.title)} className="menu">
-        <img alt={menu.title} src={menu.photo} />
-        <p className="menuTitle">{menu.title}</p>
-      </div>
-    ));
+    const menus = this.state.menus.map((menu, index) => {
+      return (
 
-    const items = this.state.items.map((item, index) => (
-      <div key={index} className="section">
-        <p className="sectionTitle">{this.state.title}</p>
-        <div className="rule" />
-        <div className="items">
-          <div className="item">
-            <img alt="menu item" src={item.photo} />
-            <p className="itemTitle">{item.title}{' '}-{' '}{item.price}</p>
-          </div>
+        <div key={index} onClick={() => this.loadMenu(menu.title)} className="menu">
+          <img alt={menu.title} src={menu.photo} />
+          <p className="menuTitle">{menu.title}</p>
         </div>
-      </div>
-    ));
+      )
+    });
+
+    const items = this.state.items.map((item, index) => {
+      return (
+        <div key={index} className="item">
+          <img alt="menu item" src={item.photo} />
+          <p className="itemTitle">{item.title} ... ${item.price}</p>
+        </div>
+      )
+    });
 
     const existingEvents = this.state.attending.map((event, index) => (
       <span key={index} className="attendingTag" value={event}>
@@ -135,10 +195,8 @@ class Builder extends Component {
     return (
       <div className="App">
         <div id="toolbar">
-          <AddMenu />
-|
-          <AddItem />
-|
+          <AddMenu addMenu={this.addMenu} />|
+          <AddItem addItem={this.addItem} menus={this.state.menus} />|
           <AddEvent vendorEventAdd={this.vendorEventAdd} events={this.state.events} />
         </div>
         <div id="content">
@@ -153,7 +211,13 @@ My Events:
           <div id="menus">
             {menus}
           </div>
-          {items}
+          <div className="section">
+            <p className="sectionTitle">{this.state.title}</p>
+            <div className="rule"></div>
+            <div className="items">
+              {items}
+            </div>
+          </div>
         </div>
       </div>
 

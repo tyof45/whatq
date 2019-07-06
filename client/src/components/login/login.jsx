@@ -4,34 +4,26 @@ class Login extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      name: "test"
     };
   }
 
-  // handleClick = (event) => {
-  //   const message = `${this.state.username}`;
-  //   window.alert(message);
-  // }
-
-  // submitLogin = (event) => {
-  //   console.log(event.target.name);
-  //   console.log(event.target.value);
-  //   const name = event.target.name;
-  //   const value = event.target.value;
-  //   this.setState({
-  //     [name]: value
-  //   });
-  // };
+  submitLogin = (event) => {
+    const value = event.target.value;
+    this.setState({
+      name: value
+    });
+    console.log(this.state.name);
+  };
 
   render() {
     return (
       <div className="App">
         <div id="venderSplash">
           <div>
-            <a href="/builder">
-              <img className="logo" alt="logo" src="../../logo-icon.svg" />
-            </a>
+            <img className="logo" alt="logo" src="../../logo-icon.svg" />
             <span id="version">Vendor Demo v0.0.1</span>
-            <input type="text" placeholder="email" />
+            <input value={this.props.username} onChange={this.submitLogin} type="text" placeholder="email" />
             <br />
             <input type="password" placeholder="password" />
             <br />

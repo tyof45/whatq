@@ -1,5 +1,5 @@
 const db = require("../models");
-
+const mongoose = require('mongoose');
 // Defining methods for the booksController
 module.exports = {
   readAllEvents: function(req, res) {
@@ -48,10 +48,23 @@ module.exports = {
       .catch(err => res.status(422).json(err))
   },
   findVendorData: function(req, res) {
-    console.log("controller")
     console.log(req.body.ids);
+    let searchArray = [];
+    for(let i = 0; i < req.body.ids.length; i++){
+      if(mongoose.Types.ObjectId.isValid(req.body.ids[i])){
+        searchArray.push(req.body.ids[i])
+      }
+    }
+    console.log(searchArray);
     db.Vendor
-      .find({ '_id': { $in: [ req.body.ids ]}})
+      .find({ '_id': { $in: [ searchArray ]}})
+      .then(dbModel => res.json(dbModel))
+      .catch(err => res.status(422).json(err))
+  },
+  joinEvents: function(req, res) {
+    console.log(req.body);
+    db.Vendor
+      .update({_id: req.params.vendor}, {events: req.body.events})
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err))
   }

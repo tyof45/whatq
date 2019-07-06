@@ -16,8 +16,10 @@ class CustomerOrder extends Component {
     this.setState({ show: false });
   };
 
-  sendOrder = () => {
-
+  submitHide = () => {
+    console.log("data sent")
+    this.props.resetOrder();
+    this.setState({ show: false });
   }
 
   render() {
@@ -36,7 +38,7 @@ class CustomerOrder extends Component {
           <h1 id="shoppingCartTitle">My Order</h1>
           <div className="rule"></div>
           {customerOrder}
-          <button className="orderSubmit" type="submit">Submit</button>
+          <button onClick={this.submitHide} className="orderSubmit" type="submit">Submit</button>
         </Modal>
         <div onClick={this.showModal} id="customerOrder">
           My Order (
