@@ -11,7 +11,7 @@ router.route("/all")
 
 //display a list of all vendors for a specific event to the consumer
 router.route("/:id/vendors")
-  .get(eventsController.readAllVendors)
+  .patch(eventsController.findVendorData)
   .put(eventsController.updateVendors)
 //display menu per event per vendor
 //display a list of all vendors for a specific event to the consumer

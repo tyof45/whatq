@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import CustomerOrder from '../customerorder/customerorder';
 import API from '../../utils/API';
+import axios from 'axios';
 // import API from '../utils/API'
 class Mobile extends Component {
   constructor(props) {
@@ -52,14 +53,13 @@ class Mobile extends Component {
 
   loadVendors = (eventTitle) => {
     const index = this.state.events.findIndex(event => event.title === eventTitle);
-    console.log(index);
-    console.log(this.state.events[index]._id)
-    API.getVendorsFromEvent(this.state.events[index]._id)
-    .then(
-      (data) => {
-        console.log(data.data);
-      }
-    )
+    console.log(this.state.events[index].vendors)
+    let searchIds = JSON.stringify({ids: this.state.events[index].vendors})
+    console.log(searchIds);
+    axios.patch("/api/events/asdf/vendors", {ids: this.state.events[index].vendors})
+      .then((data) => {
+        console.log(data.data)
+      })
     this.setState({ selectedCategory: 'Vendors', vendors: this.state.events[index].vendors, eventTitle: this.state.events[index].title });
   };
 

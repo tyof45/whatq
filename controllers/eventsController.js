@@ -46,5 +46,13 @@ module.exports = {
       .update({restaurant: req.params.vendor}, {$push: {orders: req.body}})
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err))
+  },
+  findVendorData: function(req, res) {
+    console.log("controller")
+    console.log(req.body.ids);
+    db.Vendor
+      .find({ '_id': { $in: [ req.body.ids ]}})
+      .then(dbModel => res.json(dbModel))
+      .catch(err => res.status(422).json(err))
   }
 };

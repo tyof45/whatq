@@ -1,9 +1,7 @@
-
 import React, { Component } from 'react';
 import AddMenu from '../addmenu/addmenu';
 import AddItem from '../additem/additem';
 import AddEvent from '../addevent/addevent';
-
 import API from '../../utils/API';
 // 'LA County Fair',
 // 'Off the Grid',
@@ -14,16 +12,7 @@ class Builder extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      events: [
-        {
-          _id: 'al;sdkfjsdl;af',
-          name: 'LA County Fair',
-        },
-        {
-          _id: 'asdlkf',
-          name: 'Off the Grid',
-        },
-      ],
+      events: [],
       attending: [],
       menus: [
         {
@@ -48,6 +37,24 @@ class Builder extends Component {
               price: '1',
               description: '',
             },
+            {
+              title: 'water',
+              photo: '../water.gif',
+              price: '1',
+              description: '',
+            },
+            {
+              title: 'water',
+              photo: '../water.gif',
+              price: '1',
+              description: '',
+            },
+            {
+              title: 'water',
+              photo: '../water.gif',
+              price: '1',
+              description: '',
+            },
           ],
         },
       ],
@@ -63,9 +70,15 @@ class Builder extends Component {
         for (let i = 0; i < data.data.length; i += 1) {
           newEvents.push({ _id: data.data[i]._id, name: data.data[i].name });
         }
-        // this.setState({ events: newEvents });
+        this.setState({ events: newEvents });
         console.log(newEvents)
-      });
+    });
+
+    API.findVendor("5d1ffc8f4fc3ca48b4cc861f")
+      .then((data) => {
+        console.log(data.data.menus)
+        this.setState({ menus: data.data.menus})
+      })
   }
 
   loadMenu = (menuTitle) => {
