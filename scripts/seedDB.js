@@ -524,47 +524,7 @@ const vendorSeed = [
         }
       ]
     }]
-  },   
-  {
-    name: "",
-    photo: "",
-    menus: [{
-      title: "",
-      photo: "",
-      items: [
-        {
-          title: "", 
-          photo: "",
-          price: "",
-          description: ""
-        },
-        {
-          title: "", 
-          photo: "",
-          price: "",
-          description: ""
-        },
-        {
-          title: "", 
-          photo: "",
-          price: "",
-          description: ""
-        },
-        {
-          title: "", 
-          photo: "",
-          price: "",
-          description: ""
-        },
-        {
-          title: "", 
-          photo: "",
-          price: "",
-          description: ""
-        }
-      ]
-    }]
-  },   
+  }  
 ];
 
 db.Vendor
