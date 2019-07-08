@@ -17,10 +17,10 @@ class AddEvent extends Component {
   hideModal = () => {
     this.setState({ show: false });
   };
-  
+
   render() {
     const existingEvents = this.props.events.map((event, index) => (
-      <button key={index} onClick={() => { this.props.vendorEventAdd(event.name) }} className="eventButton">+ {event.name}</button>
+      <button key={index} onClick={() => { this.props.vendorEventAdd(event) }} className="eventButton">+ {event.name}</button>
     ));
     return (
       <main>

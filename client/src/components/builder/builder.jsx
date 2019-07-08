@@ -12,6 +12,7 @@ class Builder extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      vendorId: "5d1ffc8f4fc3ca48b4cc861f",
       events: [],
       attending: [],
       menus: [
@@ -74,9 +75,9 @@ class Builder extends Component {
         console.log(newEvents)
     });
 
-    API.findVendor("5d1ffc8f4fc3ca48b4cc861f")
+    API.findVendor(this.state.vendorId)
       .then((data) => {
-        console.log(data.data.menus)
+        console.log(data.data.events)
         this.setState({ menus: data.data.menus})
         this.setState({ attending: data.data.events})
       })
@@ -84,7 +85,7 @@ class Builder extends Component {
   }
 
   componentWillUnmount() {
-    let id = "5d1ffc8f4fc3ca48b4cc861f"
+    let id = this.state.vendorId
     console.log(this.state.menus)
     API.updateMenu(id, this.state.menus)
     .then((data)=>{
@@ -98,9 +99,10 @@ class Builder extends Component {
   };
 
   deleteEvent = (eventTitle) => {
-    const array = this.state.attending.filter(s => s !== eventTitle);
+    console.log(eventTitle)
+    const array = this.state.attending.filter(s => s.name !== eventTitle);
     this.setState({ attending: array });
-    API.joinEvent("5d1ffc8f4fc3ca48b4cc861f", {events: array})
+    API.joinEvent(this.state.vendorId, {events: array})
     .then(
       (data) => {
         console.log(data);
@@ -108,14 +110,12 @@ class Builder extends Component {
     )
   };
 
-  vendorEventAdd = (eventTitle) => {
-    let newVendorEvents = [];
-    newVendorEvents.push(eventTitle);
-    for (let i = 0; i < this.state.attending.length; i++) {
-      newVendorEvents.push(this.state.attending[i]);
-    }
+  vendorEventAdd = (event) => {
+    console.log(event, "eventTitle")
+    let newVendorEvents = this.state.attending.slice();
+    newVendorEvents.push(event);
     this.setState({ attending: newVendorEvents });
-    API.joinEvent("5d1ffc8f4fc3ca48b4cc861f", {events: newVendorEvents})
+    API.joinEvent(this.state.vendorId, {events: newVendorEvents})
     .then(
       (data) => {
         console.log(data);
@@ -131,7 +131,7 @@ class Builder extends Component {
     }
     this.setState({ menus: newMenus });
 
-    let id = "5d1ffc8f4fc3ca48b4cc861f"
+    let id = this.state.vendorId
     API.updateMenu(id, newMenus)
     .then((data)=>{
       console.log(data);
@@ -149,7 +149,7 @@ class Builder extends Component {
     });
     menus[index].items.push(newItem);
     this.setState({ menus: menus });
-    let id = "5d1ffc8f4fc3ca48b4cc861f"
+    let id = this.state.vendorId
     API.updateMenu(id, menus)
     .then((data)=>{
       console.log(data);
@@ -176,8 +176,8 @@ class Builder extends Component {
     });
 
     const existingEvents = this.state.attending.map((event, index) => (
-      <span key={index} className="attendingTag" value={event}>
-        {event}<img alt="unattend event" onClick={() => this.deleteEvent(event)} src="../close.svg" />
+      <span key={index} className="attendingTag" value={event.name}>
+        {event.name}<img alt="unattend event" onClick={() => this.deleteEvent(event.name)} src="../close.svg" />
       </span>
     ));
 

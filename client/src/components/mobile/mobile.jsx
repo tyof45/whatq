@@ -70,8 +70,7 @@ class Mobile extends Component {
   };
 
   loadMenus = (vendorTitle) => {
-    const index = this.state.vendors.findIndex(vendor => vendor.title === vendorTitle);
-    console.log(this.state.vendors[index]._id)
+    const index = this.state.vendors.findIndex(vendor => vendor.name === vendorTitle);
     this.setState({ selectedCategory: 'Menus', menus: this.state.vendors[index].menus, currentVendor: vendorTitle, vendorId: this.state.vendors[index]._id });
   };
 
@@ -125,9 +124,9 @@ class Mobile extends Component {
     });
 
     const vendors = this.state.vendors.map((vendor, index) => (
-      <div key={index} onClick={() => this.loadMenus(vendor.title)} className="mEvent">
-        <img alt={vendor.title} src={vendor.photo} />
-        <p className="vendorTitle">{vendor.title}</p>
+      <div key={index} onClick={() => this.loadMenus(vendor.name)} className="mEvent">
+        <img alt={vendor.name} src={vendor.photo} />
+        <p className="vendorTitle">{vendor.name}</p>
       </div>
     ));
 
