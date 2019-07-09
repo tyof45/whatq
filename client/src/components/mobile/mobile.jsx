@@ -7,20 +7,7 @@ class Mobile extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      events: [
-        {
-          title: 'LA County Fair',
-          address: '1101 W. McKinley Ave. Pomona, CA 91768',
-          photo: '../event1.jpg',
-          vendors: [],
-        },
-        {
-          title: 'event 2',
-          address: '1101 W. McKinley Ave. Pomona, CA 91768',
-          photo: '../event2.jpg',
-          vendors: [],
-        },
-      ],
+      events: [],
       order: [],
       customerOrder: '',
       vendorId: '',

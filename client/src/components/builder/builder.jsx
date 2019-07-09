@@ -12,53 +12,10 @@ class Builder extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      vendorId: "5d1ffc8f4fc3ca48b4cc861f",
+      vendorId: "5d1ffc8f4fc3ca48b4cc8625",
       events: [],
       attending: [],
-      menus: [
-        {
-          title: 'Bowls',
-          photo: '../menu.jpg',
-          items: [
-            {
-              title: 'burger',
-              photo: '../burritobowl.jpg',
-              price: '1',
-              description: '',
-            },
-          ],
-        },
-        {
-          title: 'Drinks',
-          photo: '../drinks.jpg',
-          items: [
-            {
-              title: 'water',
-              photo: '../water.gif',
-              price: '1',
-              description: '',
-            },
-            {
-              title: 'water',
-              photo: '../water.gif',
-              price: '1',
-              description: '',
-            },
-            {
-              title: 'water',
-              photo: '../water.gif',
-              price: '1',
-              description: '',
-            },
-            {
-              title: 'water',
-              photo: '../water.gif',
-              price: '1',
-              description: '',
-            },
-          ],
-        },
-      ],
+      menus: [],
       title: [],
       items: [],
     };

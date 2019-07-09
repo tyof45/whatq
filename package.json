@@ -3,11 +3,14 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "client": "cd client && npm start",
-    "server": "server.js",
+    "client": "cd client && npm run start",
+    "server": "node server.js",
     "dev": "concurrently --kill-others-on-fail \"node server\" \"yarn client\"",
     "start": "node server.js",
-    "seed": "node scripts/seedDB.js"
+    "seed": "node scripts/seedDB.js",
+    "install": "cd client && npm install",
+    "build": "cd client && npm run build",
+    "heroku-postbuild": "npm install --prefix client && npm run build --prefix client"
   },
   "dependencies": {
     "body-parser": "^1.18.3",
