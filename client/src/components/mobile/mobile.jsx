@@ -31,7 +31,7 @@ class Mobile extends Component {
           eventCopy.push({
             title: data.data[i].name,
             address: data.data[i].address,
-            photo: '../event1.jpg',
+            photo: '../grandcentralmarket.png',
             vendors: data.data[i].Vendors,
             _id: data.data[i]._id
           });

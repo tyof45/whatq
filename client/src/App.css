@@ -328,7 +328,8 @@ button>img {
 }
 
 .mEvent>img {
-  width: 125%;
+  height: 100%;
+  width: auto;
 }
 
 .mEventTitle {
