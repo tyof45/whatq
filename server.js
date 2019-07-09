@@ -23,6 +23,11 @@ app.get('*', (req, res) => {
 // const seed = require('./scripts/seedDB');
 // seed();
 
+mongoose.connect(
+  process.env.MONGODB_URI
+    || 'mongodb://localhost/whatQ',
+);
+
 
 mongoose.set('useFindAndModify', false);
 
