@@ -1,6 +1,11 @@
 const mongoose = require('mongoose');
 const db = require('../models');
 
+mongoose.connect(
+  process.env.MONGODB_URI
+    || 'mongodb://localhost/whatQ',
+);
+
 const vendorSeed = [
   {
     name: "Beachy Keen's Pizza",
@@ -291,36 +296,73 @@ const vendorSeed = [
       items: [
         {
           title: "Proabition Burger", 
-          photo: "https://s3-media1.fl.yelpcdn.com/bphoto/DYwEvypapancSLVEUp2G-A/o.jpg",
+          photo: "https://scontent-sjc3-1.cdninstagram.com/vp/262cc718d2381e40cbf7166d68e788a3/5DAD4AEE/t51.2885-15/sh0.08/e35/s750x750/46695829_2007420015981083_4866815824913118828_n.jpg?_nc_ht=scontent-sjc3-1.cdninstagram.com",
           price: "15.00",
-          description: ""
+          description: "Chipotle aioli, sharp cheddar, tomato, lettuce, pretzel bun."
         },
         {
-          title: "Chili Lime Chicken", 
-          photo: "https://s3-media4.fl.yelpcdn.com/bphoto/iqAk2DO4SAAVcr_Bx3d_kw/o.jpg",
-          price: "18.00",
-          description: ""
+          title: "Spice Thai Curry Chicken", 
+          photo: "https://scontent-sjc3-1.cdninstagram.com/vp/2a72d6c2a9511a89c14d1fa0aa346127/5DAE0FC0/t51.2885-15/sh0.08/e35/s750x750/39823529_259709604685395_21408466350374912_n.jpg?_nc_ht=scontent-sjc3-1.cdninstagram.com",
+          price: "20.00",
+          description: "Sauteed garden vegetables, chicken breast, Thai Basil, coconut milk and red curry sauce.  Served with steamed rice."
         },
         {
-          title: "Tacos", 
-          photo: "https://s3-media1.fl.yelpcdn.com/bphoto/UCqfsXxZuZCgm_vC7dVR_A/o.jpg",
+          title: "Baja Style Fish Tacos", 
+          photo: "https://scontent-sjc3-1.cdninstagram.com/vp/8a4bc41e8a399e7134cea353aa1d894c/5DAAE2BD/t51.2885-15/sh0.08/e35/s750x750/38002441_215532842461317_8173731297282228224_n.jpg?_nc_ht=scontent-sjc3-1.cdninstagram.com",
           price: "12.00",
-          description: ""
+          description: "Corn tortilla, shredded cabbage, pico de gallo & avocado chipotle tartar sauce."
         },
         {
-          title: "Kiwi Salad", 
-          photo: "https://s3-media3.fl.yelpcdn.com/bphoto/gPD0fDUchb92YJTPAAjaXQ/o.jpg",
-          price: "12.00",
-          description: ""
+          title: "Chilaquiles", 
+          photo: "https://scontent-sjc3-1.cdninstagram.com/vp/57cf13df1f4ce147f97cf6b2fd934080/5DC42163/t51.2885-15/sh0.08/e35/p750x750/57417976_365956094024811_7148164761693009317_n.jpg?_nc_ht=scontent-sjc3-1.cdninstagram.com",
+          price: "14.00",
+          description: "Tortilla chips, black beans, queso fresco, jalapeno tomatillo salsa, creme fresca, two fried eggs."
         },
         {
           title: "Blue Cheese Tots", 
-          photo: "https://s3-media4.fl.yelpcdn.com/bphoto/hQC8ZbZfKugX-kN6xThJ6A/o.jpg",
+          photo: "https://scontent-sjc3-1.cdninstagram.com/vp/82f93fa0d1ee493d96fa21aaadf4eef7/5DA49E2C/t51.2885-15/sh0.08/e35/s750x750/51003673_2078616818881374_5760941391008335856_n.jpg?_nc_ht=scontent-sjc3-1.cdninstagram.com",
           price: "10.00",
-          description: ""
+          description: "Infamous blue cheese sauce, chipotle aioli, chive and tots."
         }
       ]
-    }]
+    },
+    {
+      title: "Cocktails",
+      photo: "https://scontent-sjc3-1.cdninstagram.com/vp/b814136dec6ec48942c244a45254cc95/5DA5D951/t51.2885-15/sh0.08/e35/s750x750/65311229_468528963910677_8597433618727354649_n.jpg?_nc_ht=scontent-sjc3-1.cdninstagram.com",
+      items: [
+        {
+          title: "Cucuberry", 
+          photo: "https://scontent-sjc3-1.cdninstagram.com/vp/8bc17bdd0aa0b486f7459146b0e1c122/5DC5E979/t51.2885-15/sh0.08/e35/s750x750/60805533_424035778177074_6660603938533393519_n.jpg?_nc_ht=scontent-sjc3-1.cdninstagram.com",
+          price: "12.00",
+          description: "Smirnoff Vodka, Lemon Juice, Simple Syrup, Muddled Cucumber"
+        },
+        {
+          title: "Purple Rain Martini", 
+          photo: "https://scontent-sjc3-1.cdninstagram.com/vp/4d7e4f7e602263d12f41f6fb961497cb/5DC19AD3/t51.2885-15/sh0.08/e35/s750x750/58410625_116713512651375_6436224129484122545_n.jpg?_nc_ht=scontent-sjc3-1.cdninstagram.com",
+          price: "12.00",
+          description: "Gin, Gifford's Creme De Violetse, Lemon Juice, Simple Syrup"
+        },
+        {
+          title: "Side-car Kick Start", 
+          photo: "https://scontent-sjc3-1.cdninstagram.com/vp/8c790733f3d135722efde3bca09672b6/5DAECF9B/t51.2885-15/sh0.08/e35/s750x750/58409935_142049426853574_2948063884502472542_n.jpg?_nc_ht=scontent-sjc3-1.cdninstagram.com",
+          price: "12.00",
+          description: "Hennessey, Campari, Lemon Juice, Simple Syrup"
+        },
+        {
+          title: "Old Fashion", 
+          photo: "https://scontent-sjc3-1.cdninstagram.com/vp/9d5fe83a9b4c6ef927d99e1eb4c18a0b/5DAB4F91/t51.2885-15/sh0.08/e35/s750x750/56923045_281249056142281_8712154511829989521_n.jpg?_nc_ht=scontent-sjc3-1.cdninstagram.com",
+          price: "12.00",
+          description: "Bourbon, Simple Syrup, Lucardo Maraschino Cherrie, Orange Peel"
+        },
+        {
+          title: "Georgia Fizz", 
+          photo: "https://scontent-sjc3-1.cdninstagram.com/vp/c418403f467a19dc7789d39c3f296ca0/5DB0CC54/t51.2885-15/sh0.08/e35/s750x750/56737365_308798479814220_3256621885856928804_n.jpg?_nc_ht=scontent-sjc3-1.cdninstagram.com",
+          price: "12.00",
+          description: "Whiskey Gold Peach, Lime Juice, Simple Syrup, Egg Whites"
+        }
+      ]
+    }
+  ]
   },   
   {
     name: "Tamale Factory",
@@ -481,59 +523,18 @@ const vendorSeed = [
         }
       ]
     }]
-  },   
-  {
-    name: "",
-    photo: "",
-    menus: [{
-      title: "",
-      photo: "",
-      items: [
-        {
-          title: "", 
-          photo: "",
-          price: "",
-          description: ""
-        },
-        {
-          title: "", 
-          photo: "",
-          price: "",
-          description: ""
-        },
-        {
-          title: "", 
-          photo: "",
-          price: "",
-          description: ""
-        },
-        {
-          title: "", 
-          photo: "",
-          price: "",
-          description: ""
-        },
-        {
-          title: "", 
-          photo: "",
-          price: "",
-          description: ""
-        }
-      ]
-    }]
-  },   
+  }  
 ];
 
-module.exports = () => {
-  db.Vendor
-  .remove({})
-  .then(() => db.Vendor.insertMany(vendorSeed))
-  .then(data => {
-    console.log(data.result.n + " records inserted!");
-    process.exit(0);
-  })
-  .catch(err => {
-    console.error(err);
-    process.exit(1);
-  });
-}
+
+db.Vendor
+.remove({})
+.then(() => db.Vendor.collection.insertMany(vendorSeed))
+.then(data => {
+  console.log(data.result.n + " records inserted!");
+  process.exit(0);
+})
+.catch(err => {
+  console.error(err);
+  process.exit(1);
+});

@@ -15,10 +15,6 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(require("./routes/index"));
 
 
-mongoose.connect(
-  process.env.MONGODB_URI
-    || 'mongodb://localhost/whatQ',
-);
 app.use(express.static('client/build'));
 app.get('*', (req, res) => {
   res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
